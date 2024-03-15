@@ -1,0 +1,18 @@
+23,b,fff,22.5
+24,c,eee,20.0
+66,irish,irlanda,13.0
+3,latte,nu stiu,15.0
+2,lapte,bbbb,3.1
+68,starbucks,ro,2.0
+67,ted,franta,16.0
+12,irish,irlanda,20.0
+13,esspresso,irlanda,14.0
+1,cioco,aaaaaa,15.5
+18,moc,usa,3.0
+17,mo,spania,4.0
+16,ee,eee,2.0
+14,xxxx,xxxxx,1.0
+22,a,ggg,22.5
+47,ana,are,5.0
+77,OOOOO,OOOOOOOOO,9.0
+60,WWW,WWWW,3.0

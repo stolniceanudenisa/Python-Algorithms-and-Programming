@@ -1,0 +1,13 @@
+1,Mocca,uk,10.0
+2,Cappuccino,usa,15.5
+3,Esspresso,uk,4.5
+4,Neagra,ro,19.5
+5,Alba,usa,20.5
+6,Thai,uk,16.6
+7,Bubble,ro,9.9
+8,Tea,uk,3.4
+9,Irish,irlanda,20.0
+77,Irish,aaaaaa,12.0
+100,Irish,aaaaa,12.0
+999,Aaaaaaaaaa,wwwwwwww,12.0
+88,Ciocolfrisca,letoniaa,12.3

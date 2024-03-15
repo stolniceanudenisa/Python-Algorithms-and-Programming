@@ -1,0 +1,5 @@
+12,Irish,irlanda,20.0
+66,irish,irlanda,13.0
+112,ciocoalba,uk,10.0
+113,ciocoverde,usa,13.0
+113,ciocoverde,usa,13

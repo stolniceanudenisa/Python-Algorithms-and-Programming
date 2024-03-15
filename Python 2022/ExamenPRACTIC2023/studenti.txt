@@ -1,0 +1,10 @@
+1,aa a,2,2
+2,bea,5,10
+3,maria,6,9
+4,alex,2,8
+5,alina,3,6
+6,ela,3,10
+7,mihai,8,10
+8,aaaaa a,3,3
+54,aaa aaa,2,2
+1,aaa aaaaaaaaaaa ,2,2
