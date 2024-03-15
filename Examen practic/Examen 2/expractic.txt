@@ -1,0 +1,268 @@
+DOMAIN
+
+from dataclasses import dataclass
+
+
+@dataclass
+class Cafea:
+    id_cafea: int
+    nume_cafea: str
+    tara_de_origine: str
+    pret_cafea: float
+
+    def __str__(self):
+        return f'Cafeaua cu id-ul: {self.id_cafea}, numele: {self.nume_cafea}, tara de origine: {self.tara_de_origine}, pretul: {self.pret_cafea}'
+
+
+
+
+
+
+VALIDATORI
+
+
+class CafeaValidator:
+    def validate(self, cafea):
+        """
+
+        erori = []
+
+        if len(cafea.nume_cafea) < 3:
+            erori.append('Numele trebuie sa aiba cel putin 3 litere!')
+       
+
+        if float(cafea.pret_cafea) <= 0:
+            erori.append('Pretul trebuie sa fie un float mai mare decat zero!')
+
+         erori.append('Id-ul trebuie sa fie nevid!')
+
+        if len(erori) > 0:
+            erori_string = '\n'.join(erori)
+            raise ValueError(erori_string)
+
+
+
+
+
+
+
+REPO
+
+from Domain.cafea import Cafea
+
+
+class CafeaFileRepo:
+    def __init__(self, filename):
+        self.__filename = filename
+        self.__storage = {}
+
+    def read_file(self):
+        """
+        Citeste din fisier toate cafelele
+        :return:
+        """
+        lista = []
+        with open(self.__filename, "r") as f:
+            lines = f.readlines()
+            self.__storage.clear()
+            for line in lines:
+                line = line.strip()
+                if line != "":
+                    parts = line.split(',')
+                    idc = parts[0]
+                    numec = parts[1]
+                    tara = parts[2]
+                    pret = parts[3]
+                    cafea = Cafea(idc, numec, tara, float(pret))
+                    self.__storage[idc] = cafea
+                    lista.append(cafea)
+        return lista
+
+    def write_file(self):
+        """
+        Scrie in fisier
+        :return:
+        """
+        with open(self.__filename, "w") as f:
+            cafele = self.__storage
+            for key in cafele:
+                idc = cafele[key].id_cafea
+                nume = cafele[key].nume_cafea
+                tara = cafele[key].tara_de_origine
+                pret = cafele[key].pret_cafea
+                f.write(str(idc) + ',' + nume + ',' + tara + ',' + str(pret) + '\n')
+
+    
+
+    def get_all(self):
+        """
+        Returneaza toate cafelele din storage
+        :return:
+        """
+        self.read_file()
+        return self.__storage.values()
+
+    def add(self, cafea: Cafea):
+        """
+        Adauga o cafea
+        :param cafea: obiectul de tip cafea
+        :return:
+        """
+        self.read_file()
+        if self.get_by_id(cafea.id_cafea) is not None:
+            raise KeyError(f'Deja exista cafeaua cu id-ul: {cafea.id_cafea}')
+        if self.get_by_name(cafea.id_cafea) is not None:
+            raise ValueError(f'Deja exista cafeaua cu numele: {cafea.nume_cafea}')
+        self.__storage[cafea.id_cafea] = cafea
+        self.write_file()
+
+    def get_by_id(self, id_cafea):
+        """
+        Returneaza o cafea cu un id respectiv
+        :param id_cafea: id-ul
+        :return: True, sau None daca nu exista
+        """
+        self.read_file()
+        if id_cafea in self.__storage:
+            return self.__storage[id_cafea]
+        return None
+
+    
+
+
+
+SERVICE
+
+from Domain.cafea import Cafea
+from Domain.cafea_validator import CafeaValidator
+from Repository.cafea_repository import CafeaFileRepo
+
+
+class CafeaService:
+    def __init__(self, cafea_repo: CafeaFileRepo, cafea_validator: CafeaValidator):
+        self.__cafea_repo = cafea_repo
+        self.__cafea_validator = cafea_validator
+
+    def get_all_cafele(self):
+        """
+        Returneaza toate cafelele din storage
+        :return: cafelele
+        """
+        return self.__cafea_repo.get_all()
+
+    def add_cafea(self, idc, nume, tara, pret):
+        """
+        Adauga o cafea
+        :param idc: id-ul
+        :param nume: numele
+        :param tara: tara
+        :param pret: pretul
+        :return:
+        """
+        self.__cafea_repo.read_file()
+        cafea = Cafea(idc, nume, tara, pret)
+        self.__cafea_validator.validate(cafea)
+        self.__cafea_repo.add(cafea)
+        self.__cafea_repo.write_file()
+
+    def afis_cafele_tara(self, nume_tara):
+        """
+        Afiseaza cafelele care fac parte dintr-o tara respectiva
+        :param nume_tara:
+        :return:
+        """
+        cafele = self.get_all_cafele()
+        lista = []
+        for cafea in cafele:
+            if cafea.tara_de_origine == nume_tara:
+                lista.append(cafea)
+        return lista
+
+
+
+
+
+
+UI
+from Service.cafea_service import CafeaService
+
+
+class Console:
+    def __init__(self, cafea_service: CafeaService):
+        self.__cafea_service = cafea_service
+
+    def menu(self):
+        print("""
+        1. Afisarea tuturor cafelelor.
+        2. Afisare toate cafele din tara respectiva.
+        3. Adaugare cafea.
+        x. Exit
+        """)
+
+    def run_ui(self):
+        while True:
+            self.menu()
+            opt = input('Introduceti optiunea: ')
+            if opt == '1':
+                self.handle_afisare_cafele()
+            elif opt == '2':
+                self.handle_afis_cafele_tara()
+            elif opt == '3':
+                self.handle_add_cafea()
+            elif opt == 'x':
+                break
+            else:
+                print('Optiune invalida. Reincercati.')
+
+    def handle_afisare_cafele(self):
+        cafele = self.__cafea_service.get_all_cafele()
+        for cafea in cafele:
+            print(cafea)
+
+    def handle_afis_cafele_tara(self):
+        nume_tara = input('Dati numele tarii: ')
+        rez = self.__cafea_service.afis_cafele_tara(nume_tara)
+        for cafea in rez:
+            print(cafea)
+
+    def handle_add_cafea(self):
+        idc = input('Dati id-ul cafelei: ')
+        nume = input('Dati numele cafelei: ')
+        tara = input('Dati tara cafelei: ')
+        pret = float(input('Dati pretul cafelei: '))
+        try:
+            self.__cafea_service.add_cafea(idc, nume, tara, pret)
+            self.handle_afisare_cafele()
+        except KeyError as ke:
+            print(ke)
+        except ValueError as ve:
+            print(ve)
+
+
+
+
+
+
+
+MAIN
+
+from Domain.cafea_validator import CafeaValidator
+from Repository.cafea_repository import CafeaFileRepo
+from Service.cafea_service import CafeaService
+from Tests.teste import Teste
+from UI.console import Console
+
+
+def main():
+    cafea_repo = CafeaFileRepo('coffees.txt')
+    cafea_validator = CafeaValidator()
+
+    cafea_service = CafeaService(cafea_repo, cafea_validator)
+    console = Console(cafea_service)
+
+    console.run_ui()
+
+
+if __name__ == '__main__':
+    Teste()
+    main()

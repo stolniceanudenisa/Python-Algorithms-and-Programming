@@ -1,0 +1,51 @@
+    def handle_generare_cafea(self):
+        n = int(input('Nr de cafele ce se doresc generate: '))
+        str_tari = input('Introduceti tari de origine ale cafelelor cu , intre ele: ')
+        lista_tari = str_tari.split(',')
+        str_preturi = input('Introduceti preturi de cafele cu , intre ele: ')
+        lista_preturi = str_preturi.split(',')
+
+        self.__cafea_service.add_random(n, lista_tari, lista_preturi)
+        print(colored('Au fost adaugate cu succes ' + str(n) + ' cafele!', 'green'))
+
+
+
+
+
+
+    def add_random(self, n, lista_tari, lista_preturi):
+        """
+        Creeaza n cafele random.
+        :param n: numarul de cafele de generat
+        :param lista_tari:  lista de tari din care se alege
+        :param lista_preturi:  lista de preturi din care se alege
+        :return:
+        """
+        listanume = ['mocca', 'ciocon', 'cappuccino', 'starbucks', 'ted', 'tucano']
+        i = 1
+        lista = self.__cafea_repo.read_file()
+        ok = 1
+        while i <= n:
+            idcafea = random.randrange(50, 70)
+            nume = random.choice(listanume)
+            tari = random.choice(lista_tari)
+            preturi = random.choice(lista_preturi)
+            cafea = Cafea(idcafea, nume, tari, preturi)
+            for el in lista:
+                if el.tara_de_origine == tari and el.pret_cafea == preturi:
+                    ok = 0
+            if ok == 1:
+                self.__cafea_validator.validate(cafea)
+                lista.append(cafea)
+                i += 1
+        self.__cafea_repo.save_to_file(lista)
+
+
+
+
+
+
+
+
+
+

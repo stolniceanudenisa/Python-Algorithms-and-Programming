@@ -1,0 +1,14 @@
+
+    def clienti_ord_nr_voc(self):
+        dict = self.get_all_clienti()
+        rez = sorted(dict, key=lambda x: self.nr_vocale(x))
+        for cl in rez:
+            print(cl)
+
+    def nr_vocale(self, client):
+        vocale = 'aeiou'
+        nr = 0
+        for i in client.nume_client:
+            if i in vocale:
+                nr += 1
+        return nr

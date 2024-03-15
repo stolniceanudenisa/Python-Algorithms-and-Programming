@@ -1,0 +1,124 @@
+class Console:
+   def __init__(self, cafea_service: CafeaService):
+       self.__cafea_service = cafea_service
+       self.__crt_undo = []  
+
+def handle_adaugare_cafea(self):
+        idc = random.randint(1, 100)
+        numec = input('Dati numele cafelei: ')
+        tara = input('Dati tara de origine a cafelei: ')
+        pret = float(input('Dati pretul cafelei:'))
+        self.__crt_undo = self.__cafea_service.update_undo4(self.__crt_undo, numec, tara,
+                                                            pret)  # adauga la lista de undo produsele ce urmeaza a fi sterse
+        try:
+            self.__cafea_service.add_cafea(idc, numec, tara, pret)
+            print(colored('Cafeaua a fost adaugata cu succes.', 'green'))
+            self.handle_afisare_cafele()
+        except KeyError as ke:
+            print(ke)
+        except ValueError as ve:
+            print(str(ve))
+
+
+
+def handle_undo_la_add(self):
+        try:
+            self.__crt_undo = self.__cafea_service.undo4(self.__crt_undo)
+            print(colored('S-a refacut cu succes ultima operatie de stergere!', 'green'))
+        except ValueError as ve:
+            print(colored(str(ve), 'red'))
+        self.handle_afisare_cafele()
+
+
+
+
+DELETE
+
+
+def handle_delete_cafele_cu_cifra_continuta(self):
+        cifra = input('Dati cifra: ')
+
+        self.__crt_undo = self.__cafea_service.update_undo(self.__crt_undo,
+                                                           int(cifra))  # adauga la lista de undo produsele ce urmeaza a fi sterse
+        sterse = self.__cafea_service.delete_cafele_cu_cifra_continuta(cifra)
+
+        self.__cafea_service.delete_cafele_cu_cifra_continuta(cifra)
+        print(colored('Au fost sterse ' + str(sterse) + ' produse!', 'green'))
+        self.handle_afisare_cafele()
+
+    def handle_undo_dupa_stergere_cifra(self):
+        """
+        Reface ultima operatie de stergere.
+        """
+        try:
+            self.__crt_undo = self.__cafea_service.undo(self.__crt_undo)
+            print(colored('S-a refacut cu succes ultima operatie de stergere dupa cifre!', 'green'))
+        except ValueError as ve:
+            print(colored(str(ve), 'red'))
+        self.handle_afisare_cafele()
+
+
+
+def update_undo(self, crt_undo, cifra):
+        """
+        Adauga la lista de undo o lista care contine toate elementele ce urmeaza a fi sterse din multimea de produse.
+        :param crt_undo: lista care retine toate stergerile
+        :type crt_undo: list
+        :param cif: cifra dupa care se fac stergerile (daca aceasta apare in pret)
+        :type cifra: int
+        :return: lista de undo cu update-ul facut (adaugarea elementelor ce urmeaza a fi sterse)
+        :type return: list
+        """
+        lista = self.__cafea_repo.read_file()
+        lista = [el for el in lista if str(cifra) in str(el.id_cafea)]
+
+        copy_list = []
+        for el in lista:
+            copy_list.append(Cafea(el.id_cafea, el.nume_cafea, el.tara_de_origine, el.pret_cafea))
+
+        crt_undo.append(copy_list)
+        return crt_undo
+
+    
+
+
+
+def undo(self, crt_undo):
+        """
+        Adauga la multimea de produse toate elementele sterse la ultima stergere.
+        :param crt_undo: lista care retine toate stergerile
+        :type crt_undo: list
+        :return: lista de undo cu update-ul facut (stergerea ultimei pozitii pt ca stergerea produselor a fost refacuta)
+        :type return: list
+        """
+        errors = []
+        if len(crt_undo) < 1:
+            errors.append('Nu se mai poate face undo!')
+        else:
+            for el in crt_undo[-1]:
+                self.add_cafea(el.id_cafea, el.nume_cafea, el.tara_de_origine, el.pret_cafea)
+
+        if len(errors) > 0:
+            errors_string = '\n'.join(errors)
+            raise ValueError(errors_string)
+
+        crt_undo.pop(-1)
+        return crt_undo
+
+
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,99 @@
+class Console:
+    def __init__(self, carte_service: CarteService):
+        self.__carte_service = carte_service
+
+    def menu(self):
+        print("""
+        1. Afisare carti.
+        2. Adaugare carte.
+        3.  
+        4.  
+        x. Exit
+        """)
+
+    def run_ui(self):
+        while True:
+            self.menu()
+            opt = input('Dati optiunea: ')
+            if opt == '1':
+                self.handle_show_all(self.__carte_service.get_all_carti())
+            elif opt == '2':
+                self.handle_add_carte()
+            elif opt == '3':
+                self.handle_nr_max_pag()
+            elif opt == '4':
+                self.handle_carti_cu_titlu()
+            elif opt == 'x':
+                break
+            else:
+                print('Comanda invalida. Reincercati.')
+
+
+   	def handle_export(self):
+        filename = input('Dati numele fisierului unde se va exporta: ')
+        self.__carte_service.export_carti(filename)
+        print('Cartile au fost exportate cu succes!')
+
+
+
+
+    def handle_add_carte(self):
+
+        id_carte = input('Dati id-ul cartii: ')
+        titlu_carte = input('Dati titlul cartii: ')
+        nrpag = int(input('Dati nr de pagini al cartii: '))
+        gen = input('Dati genul cartii: ')
+        try:
+            self.__carte_service.add_carte(id_carte, titlu_carte, nrpag,gen)
+            self.handle_show_all(self.__carte_service.get_all_carti())
+        except KeyError as ke:
+            print( ke)
+        except ValueError as ve:
+            print(str(ve))
+
+
+
+
+    def handle_gen_random(self):
+        n = int(input('Introduceti cate carti vor fi adaugate random: '))
+        str_titluri = input('Introduceti titluri separate cu , : ')
+        lista_titluri = str_titluri.split(',')
+        str_gen = input('Introduceti genuri separate cu , : ')
+        lista_gen = str_gen.split(',')
+        self.__carte_service.add_random(n, lista_titluri, lista_gen)
+        print('Au fost adaugate cu succes ' + str(n) + ' carti!')
+
+
+
+
+    def handle_show_all(self, objects):
+        for obj in objects:
+            print(obj)
+
+def cautare_cafea_dupa_nume(self):
+        nume_cafea = input('Dati numele cafelei pe care o cautati: ')
+        self.handle_show_all(self.__cafea_service.cautare_cafea_dupa_nume(nume_cafea))
+
+
+
+
+     def cautare_cafea_dupa_nume(self, nume_cafea):
+        # return [cafea for cafea in self.get_all_cafele() if cafea.nume_cafea == nume_cafea]
+        return list(filter(lambda cafea: cafea.nume_cafea == nume_cafea, self.get_all_cafele()))
+
+
+
+
+    def cautare_cafea_dupa_id(self, id_cafea):
+        """
+        Cauta si afiseaza o cafea cu un id respectiv.
+        :param id_cafea: id-ul clientului cautat.
+        :return: cafeaua cu id-ul respectiv.
+        """
+        try:
+            if self.__cafea_repo.get_by_id(id_cafea) not in self.get_all_cafele():
+                raise ValueError(f'Cafeaua cu id-ul {id_cafea} nu exista.')
+        except ValueError as ve:
+            print(ve)
+        # return list(filter(lambda cafea: cafea.id_cafea == id_cafea, self.get_all_cafele()))
+        return [cafea for cafea in self.get_all_cafele() if cafea.id_cafea == id_cafea]

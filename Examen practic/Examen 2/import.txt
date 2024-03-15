@@ -1,0 +1,73 @@
+    def save_to_file(self, lista):
+        """
+        Salveaza in fisier lista lista, stergand tot ce era acolo initial.
+        :param and type lista: lista ce trebuie salvata,list
+        """
+        with open(self.__filename, 'w') as f:
+            for el in lista:
+                string = str(el.id_cafea) + ',' + el.nume_cafea + ',' + el.tara_de_origine + ',' + str(
+                    el.pret_cafea) + '\n'
+                f.write(string)
+
+
+
+
+
+
+    def generare_i(self):
+        """
+        Genereaza jucatori cu nume si prenume dintr-un fisier existent.
+        """
+        lista = self.read_file()
+        # lista_posturi = ['fundas', 'pivot', 'extrema']
+        cnt = 0
+        with open('import.txt', 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                if line != '':
+                    line = line.strip()
+                    nume, tara = line.split(',')
+                    # pana aici am numele si prenumele de adaugat
+                    ok = 1
+                    for el in lista:
+                        if el.nume_cafea == nume and el.tara_de_origine == tara:
+                            ok = 0
+                    if ok == 1:
+                        # generez id si pret apoi adaug la lista mea
+                        id = random.randint(170, 210)
+                        pret = random.uniform(15.5, 80.5)
+                        cafea = Cafea(id, nume, tara, pret)
+                        lista.append(cafea)
+                        cnt = cnt + 1
+        self.save_to_file(lista)
+        return cnt
+
+
+
+
+    def generare_import(self):
+        """
+        Genereaza jucatori cu nume si prenume dintr-un fisier existent.
+        """
+        return self.__cafea_repo.generare_i()
+
+
+
+
+
+    def handle_import(self):
+        """
+        Genereaza jucatori cu nume si prenume dintr-un fisier existent.
+                """
+        cnt = self.__cafea_service.generare_import()
+        print(colored('Au fost importate ' + str(cnt) + ' cafele', 'green'))
+
+
+
+
+
+
+
+
+
+

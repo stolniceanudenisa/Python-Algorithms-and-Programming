@@ -1,0 +1,17 @@
+    def export(self, filename):
+        lista = self.__produs_repo.read_file()
+        rez = sorted(lista, key=lambda x: x.pret, reverse=True)
+        with open(filename, "w") as f:
+            for el in rez:
+                string = str(el.id_produs) + ',' + str(el.pret) + '\n'
+                f.write(string)
+
+
+
+
+
+
+    def handle_export(self):
+        filename = input('Dati numele fisierului de exportare: ')
+        self.__produs_service.export(filename)
+        print('Exportarea a fost efectuata cu succes!')

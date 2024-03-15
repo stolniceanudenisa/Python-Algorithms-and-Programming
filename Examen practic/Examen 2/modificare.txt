@@ -1,0 +1,51 @@
+    def set_nrpag(self, nrpag):
+        self.nrpagini = nrpag
+
+    def set_gen(self, gen):
+        self.gen = gen
+
+
+
+
+    def modificare(self, id_carte, titlu_carte, nrpag, gen):
+        self.read_file()
+        ok=0
+        erori = []
+        carti = self.get_all()
+        for carte in carti:
+            if carte.id_carte == id_carte and carte.titlu == titlu_carte:
+                carte.set_nrpag(nrpag)
+                carte.set_gen(gen)
+                ok=1
+        if ok==0:
+            erori.append('Nu exista aceasta carte cu acest id si titlu')
+        if len(erori) > 0:
+            erori_string = '\n'.join(erori)
+            raise ValueError(erori_string)
+        self.write_file()
+
+
+
+
+
+    def update(self, id_carte, titlu_carte, nrpag, gen):
+        self.__carte_repo.modificare(id_carte, titlu_carte, nrpag, gen)
+
+
+
+
+    def handle_update(self):
+        id_carte = input('Dati id-ul cartii: ')
+        titlu_carte = input('Dati titlul cartii: ')
+        nrpag = int(input('Dati NOUL nr de pagini: '))
+        gen = input('Dati NOUL gen: ')
+        try:
+            self.__carte_service.update(id_carte, titlu_carte, nrpag, gen)
+        except ValueError as ve:
+            print(str(ve))
+
+
+
+
+
+

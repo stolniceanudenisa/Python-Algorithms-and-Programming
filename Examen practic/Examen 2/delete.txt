@@ -1,0 +1,28 @@
+    def sterge_produs(self, cifra):
+        self.read_file()
+        produse =self.get_all()
+        rez = {}
+        for produs in produse:
+            if str(cifra) not in str(produs.id_produs):
+                rez[produs.id_produs] = produs
+        self.__storage = rez
+        sterse = len(rez)
+        self.write_file()
+        return sterse
+
+
+
+
+
+    def delete_prdus_cifra(self, cifra):
+        self.__produs_repo.sterge_produs(cifra)
+        sterse = self.__produs_repo.sterge_produs(cifra)
+        return sterse
+
+
+    def handle_add_delete_produse(self):
+        cifra = input('Introduceti cifra')
+        sterse = self.__produs_service.delete_prdus_cifra(cifra)
+        self.__produs_service.delete_prdus_cifra(cifra)
+        print('Au fost sterse ' + str(sterse) + ' produse!')
+        self.handle_afisare_produse()
