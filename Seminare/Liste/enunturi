@@ -1,0 +1,256 @@
+1. Care este efectul instructiunii len(lst[:-1])?
+a. lungimea listei
+b. eroare
+c. lungimea listei formate din lst mai putin ultimul element
+d. lista mai putin ultimul element
+
+2. Care dintre urmatoarele cuvinte cheie se foloseste
+in definirea constructorului unei clase?
+a. self
+b. __init__
+c. def
+d. class
+
+3. Care dintre urmatoarele variante completeaza corect
+spatiile lipsa din expresia de mai jos,
+astfel incat aceasta sa returneze numarul de numere negative din lst?
+
+len(list(filter(lambda x: x __ 0, ___(lambda y: y ** 3, lst))))
+
+a. ==, reduce
+b. <, filter
+c. ==, zip
+d. <, map
+
+4. Care dintre urmatoarele expresii vor arunca exceptii de tipul KeyError?
+a. int("abc")
+b. ages = {'Jim': 30, 'Pam': 28, 'Kevin': 33}
+   ages['Michael']
+c. ages = {'Jim': 30, 'Pam': 28, 'Kevin': 33}
+   ages[30]
+d. [1,2,3][4]
+
+5. Care dintre urmatoarele functii reprezinta o implementare recursiva echivalenta
+pentru functia de mai jos?
+
+def get_div(lst):
+    result = []
+    for x in lst:
+        if x % 3 == 0:
+            result += [x%2]
+    return result
+
+a.
+def rec_get_div(lst):
+    if lst == []:
+        return []
+    choose = []
+    if lst[0] % 3 == 0:
+        choose = [lst[0] % 2]
+    return choose + rec_get_div(lst[1:])
+b.
+def rec_get_div(lst):
+    if lst == []:
+        return []
+    if lst[0] % 3 == 0:
+        return [lst[0] % 2] + rec_get_div(lst[1:])
+    return rec_get_div(lst[1:])
+c.
+def rec_get_div(lst):
+    if lst == []:
+        return []
+    if lst[0] % 3 == 0:
+        return [lst[0] % 2] + rec_get_div(lst.pop(0))
+    return rec_get_div(lst.pop(0))
+d.
+def rec_get_div(lst):
+    if lst == []:
+        return []
+    if lst[0] % 3 != 0:
+        return rec_get_div(lst[1:] % 2)
+    return [lst[0]] + rec_get_div(lst[1:] % 2)
+
+6. Care dintre urmatoarele functii reprezinta o implementare iterativa echivalenta
+pentru functia de mai jos?
+def rec_vocale(lst):
+    if lst == []:
+        return 0
+    if 'a' in lst[0] or 'e' in lst[0] or 'i' in lst[0] or 'o' in lst[0] or 'u' in lst[0]:
+        return 1 + rec_vocale(lst[1:])
+    return rec_vocale(lst[1:])
+
+a.
+def iter_vocale(lst):
+    return sum([1 for x in lst if 'a' in x or 'e' in x or 'i' in x or 'o' in x or 'u' in x])
+b.
+def iter_vocale(lst):
+    return sum([0 for x in lst if 'a' in x or 'e' in x or 'i' in x or 'o' in x or 'u' in x])
+c.
+def iter_vocale(lst):
+    return sum(map(lambda x: 1 if 'a' in x or 'e' in x or 'i' in x or 'o' in x or 'u' in x else 0, lst))
+d.
+def iter_vocale(lst):
+    return len([1 for x in lst if 'a' in x or 'e' in x or 'i' in x or 'o' in x or 'u' in x])
+
+7. Care dintre urmatoarele metode defineste
+comportamentul operatorului - relativ la instantele unei clase?
+a. minus
+b. __minus__
+c. __sub__
+d. sub
+
+8. "Alegeti toate variantele care precizeaza corect complexitatea
+de timp a urmatoarei secvente de cod, unde n este un numar intreg citit de la tastatura:
+[x**-1 for x in range(2*n) if x % 2 == 0]
+a. O(n^3)
+b. O(n)
+c. OmegaMare(n)
+d. ThetaMare(n)
+
+9. Ce se afiseaza in urma executarii codului ?
+elemente = [1.1, 2.2, 3.8, 3.1, 3.7, 1.2, 4.6]
+elemente.insert(2, 4.4)
+print(elemente.pop(3))
+
+a. 3.7
+b. 3.1
+c. 2.2
+d. 3.8
+
+10. Care tehnica de rezolvare a problemelor este cea mai potrivită
+pentru rezolvarea următoarei probleme:
+Se da un numar natural n. Afisati toate permutarile multimii {1,2,..,n}
+
+a. Greedy
+b. Backtracking
+c. Divide et Impera
+d. Progrmare dinamica
+
+11. Care dintre urmatoarele afirmatii sunt adevarate?
+a. Un list comprehension returneaza tot timpul o lista cu un numar mai mic de elemente
+decat lista originala
+b. Un list comprehension poate avea o ramura de "else"
+c. Putem intotdeauna rescrie o functie fara a folosi list comprehensions
+d. Un list comprehension poate folosi cuvantul cheie "and"
+
+12. Care dintre urmatoarele afirmatii sunt adevarate?
+a. O lista poate fi editata
+b. Un tuplu poate fi editat
+c. Un string este imutabil
+d. Un dictionar este mutabil
+
+13. Care dintre urmatoarele afirmatii sunt adevarate?
+a. O functie lambda poate avea doi parametrii
+b. O functie lambda poate avea doua expresii
+c. O functie lambda poate avea zero parametrii
+d. O functie lambda poate avea conditii
+
+14. Care dintre urmatoarele instructiuni returneaza ultimul element dintr-o lista lst?
+a. lst.remove(-1)
+b. lst[:-1]
+c. lst.remove(3)
+d. lst.pop()
+
+15. Care dintre urmatoarele instructiuni adauga elementul x la sfarsitul listei lst?
+a. lst.append(x)
+b. lst.add(x)
+c. lst.insert(-1,x)
+d. lst += [x]
+
+16. Care dintre urmatoarele instructiuni apeleaza constructorul fara parametrii
+al clasei parinte?
+a. super()
+b. self.super()
+c. self.super().__init__()
+d. super().__init__()
+
+17. Care dintre urmatoarele secvente de cod declara o clasa Porc care mosteneste
+din clasa Animal?
+a. class Porc.Animal:
+b. class Animal(Porc):
+c. class Porc(Animal):
+d. class Porc extends Animal:
+
+18. Ce va afisa urmatoarea secventa de cod?
+def f(a):
+    a['a'] = 1
+a={}
+f(a)
+a['b'] = 2
+print(a)
+a. KeyError
+b. {'a': 1, 'b': 2}
+c. 1
+d. {'b': 2}
+
+19. Se defineste urmatorul dictionar:
+d = {1:'a', 2:'b', 3:'c'}
+Care este rezultatul instructiunii:
+d[1:2]
+
+a. ['a', 'b']
+b. 'ab'
+c. [1, 2]
+d. exceptie
+
+20. Care functie lambda este echivalenta functiei 'foo' de mai jos ?
+
+def foo(x, y):
+    c = x * y
+    return c / 10
+
+a. lambda x, y: return (x * y) / 10
+b. lambda x, y: c = x * y; return c / 10
+c. lambda x, y: (x * y) / 10
+d. lambda x, y: c = x * y; c / 10
+
+21. Care este modalitatea prin care se poate defini o metoda publica a unei clase,
+in Pyhton?
+a. public foo():
+b. foo():
+c. def foo():
+d. def __foo():
+
+22. Care dintre urmatoarele variante completeaza corect spatiile libere
+astfel incat codul urmator sa afiseze [1,100,3]?
+
+import deepcopy
+
+lst1=[1,2,3]
+...
+print(lst1)
+
+a.
+lst1[1]=200
+lst2=deepcopy(lst1)
+lst2[1]=100
+
+b.
+lst2 = lst1
+lst2[1]=100
+
+c.
+lst2 = lst1[:]
+lst2[1]=100
+
+d.
+lst2 = copy(lst1)
+lst2[1]=100
+
+23. Care este output-ul urmatoarei secvente de cod?
+
+lst = [1,2,3]
+
+if lst[0] > 2.5:
+    print('a')
+elif lst[2] > 2.5:
+    print('b')
+elif lst[1] > 2.5:
+    print('c')
+else:
+    print('d')
+
+a. a
+b. b
+c. c
+d. d
