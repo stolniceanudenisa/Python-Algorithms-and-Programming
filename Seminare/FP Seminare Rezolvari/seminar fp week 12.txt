@@ -1,0 +1,112 @@
+Backtracking, form groups of k members with different names
+
+Combinari
+
+=======================
+class Person:
+	def __init__(self, n, a):
+		self.__name = n
+		self.__age = a
+	def setters, getters, str, __repr__...
+
+pList = []
+pList.append(Person("Ana", 19 ))
+pList.append(Person("Redai", 3))
+pList.append(Person("Carina", 90 ))
+pList.append(Person("Rob", 21 ))
+pList.append(Person("Redai", 20 ))
+
+==========
+domain - cu ce lucram, cu indicii de la numele persoanelor
+def groupPersons(groupSize):
+
+	domain = [  i  for i in range(-1, len(pList))   ]
+
+	k = 0 #indexul curent din solutie 'sol
+
+	sol = [] #solutia, la fiecare pas, lista cu indici
+
+	sol.append(initSolution(domain))
+
+	while(k > 0):
+		isSelected = False
+
+		while not isSelected and sol[k] < getLast(domain):
+			sol[k] = getNext( sol[k] )
+			isSelected = isConsistent( sol )
+
+		if isSelected:
+			if isSolution(sol, groupsize):
+				yield sol
+			else:
+				k = k+1
+				sol.append(initSolution(domain))
+		else:
+			sol.pop()
+			k = k - 1
+
+
+
+
+def getNext(index):
+	return index+1
+
+def initSolution(domain):
+	return domain[0]   
+
+def isConsistent(sol):
+	for i in range(len(sol)-1):
+		if pList[sol[i]].getName() == pList[sol[len(sol) - 1]].getName():
+			return False
+	return True
+
+def getLast(domain):
+	return domain[ len(domain) - 1 ]
+
+
+def isSolution(sol, groupSize):
+	return len(sol) == groupSize 
+
+def constructSolution(sol):#parcurgi sol sa afisezi obiectele
+	aux  = []
+	for i in sol:
+		aux.append( myList[i] )
+	return aux
+
+====Controller
+for s in groupPersons(3):
+	print( constructSolution(s) ) #sa returneze o lista
+
+====UI
+vine o lista si afiseze fiecare obiect cu str
+
+============ in utils
+#constrainst = lista de nume de functii
+
+def myBacktracking(param, myList, constraints):
+	
+
+
+def isConsistent(sol, myList, constraints):
+	for c in constraints:
+		if not c(sol, myList):
+			return False
+	return True
+
+def groupMembersByName(gs):
+	def c1(sol, myList):
+		for i in sol:
+			..if..return..False
+		return True
+	myList = ...
+	param = []
+	param.append(gs)
+	constraints = []
+	constraints.append(c1)
+	
+	#sau param = [gs]
+		constraints = [c1,c2]
+
+	aici cu yield in repository
+	controller primeste
+		

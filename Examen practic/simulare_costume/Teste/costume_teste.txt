@@ -1,0 +1,4 @@
+1,bluza,vara,2000,False
+2,tricou,iarna,3000,True
+3,pantaloni,vara,4000,True
+4,maieu,iarna,5000,True

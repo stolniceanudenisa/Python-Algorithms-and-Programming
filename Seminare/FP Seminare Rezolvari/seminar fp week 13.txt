@@ -1,0 +1,144 @@
+=========== Greedy, Pb Rucsacului
+
+i = 1,...,n
+vi - valoare
+wi - weight
+
+lista solutie -> xi = {1 daca ob i este inclus in rucsac, 0 altfel}
+
+sum,i,n(xi * vi) -> max
+s.t. sum,i,n(xi * wi) <= W
+
+
+=== IN ===
+
+n
+index valoare greutate
+
+20
+1 92 96
+2 58 63
+...
+20 91 5
+524
+
+Item, Backpack, Solution, Algorithm(myGreedy), 
+=========== Class Item ==========
+class Item:
+def __init__(self, v, w):
+	self.__v = v
+	self.__w = w
+
+def getV(self):
+	return self.__v
+def getW(self):
+	return self.__w
+def setV(self, value):
+	self.__v = value
+def setW(self, value):
+	self.__w = value
+
+========== Class Backpack ===========
+def __init__(self, l, c)
+	self.__list = l
+	self.__capacity = c
+
+def getList(self):
+	return self.__list
+def setList(self, value):
+	self.__list = value
+def getCapacity(self):
+	return self.__capacity
+def setCapacity(self, value):
+	self.__capacity = value
+def getSize(self):
+	return len(self.__list)
+
+========== Class Solution ===========
+Class Solution:
+def __init__(self, b):
+	self.__backpack = b
+	self.__x = [ 0 for i in range(b.getSize()) ]
+	#x - > solutia finala ce arata ce iteme se includ sau nu
+	#o fct 'init' care atribuie tutuor elem din x -> valoarea 0, ce este intre paranteze patrate
+
+def getBackpack(self):
+	return self.__backpack
+def setBackpack(self, value):
+	self._backpack = value
+
+def getX(self):
+	return self.__x
+
+def setXAt(self, index, value):
+	#nu dam value la toata lista, preferam sa dam la elemente specifice
+	self.__x[index] = value
+
+def getSelected(self):
+	#get those who are 1/ included in backpack
+	myList = []
+	for i in range(len(self.__x)):
+		if self.__x[i] == 1:
+			myList.append(i)
+	return myList
+
+def getValue(self):
+	#valoarea tuturor incluse
+	s = 0
+	for i in range( len(self.__x) ):
+		s += self.__x[i] * self.__backpack.getList()[i].getV()
+	return s
+
+def isValid(self):
+	#weight of all included, must be lesser than W
+	s = 0
+	for i in range( len(self.__x)):
+		s += self.__x[i] * self.__backpack.getList()[i].getW() 
+	return s <= self.__backpack.getCapacity()
+
+
+========= Class GreedyAlgorithm ============
+from solution import Solution
+#fara pachete
+class GreedyAlgorithm:
+def ___init__(self, b):
+	self.__backpack = b
+	self.__sol = Solution(b)
+	
+def getters,setters...
+
+def getNext(self):
+	#urmatorul item neinclus in rucsac cu valoarea cea mai mare
+	max1 = -1
+	index = -1
+	for i in range( len( self.__sol.getX() ) ):
+		if self.__sol.getX()[i] == 0 and self.__backpack.getList()[i].getV() >= max:
+			max = self.__backpack.getList()[i].getV()
+			index = i
+	return index
+
+def solve(self):
+	self.__sol.init()
+	i = -1
+	while self.__sol.isValid():
+		i = self.getNext()
+		self.__sol.setXAt(i, 1)
+
+	self.__sol.setXAt(i, 0)
+
+def getSol(self):
+	return self.__sol
+
+
+====== in modulul app.py =========
+importuri
+def printValue():
+	b = Backpack(l, c)
+	a = GreedyAlgorithm(b)
+	a.solve()
+	
+	for i in range( len(a.getSol().getX()  ) ):
+		if a.getSol().getX()[i] == 1:
+			print( str( b.getList()[i].getV() ) )
+
+		

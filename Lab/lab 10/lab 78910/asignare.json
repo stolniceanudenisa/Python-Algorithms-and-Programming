@@ -1,0 +1,9 @@
+{
+  "1": {
+    "py/object": "domeniu.asignare.Asignare",
+    "_Entitate__idEntitate": "1",
+    "_Asignare__idStudent": "1",
+    "_Asignare__nrLab_nrProblema": "2",
+    "_Asignare__nota": "3"
+  }
+}

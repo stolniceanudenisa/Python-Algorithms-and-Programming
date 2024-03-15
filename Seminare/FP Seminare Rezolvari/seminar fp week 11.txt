@@ -1,0 +1,177 @@
+-llista de echipe sportive continand membru cu id si nume
+
+domain
+	Member
+	Group
+	memberException
+	groupException
+repository
+	MemberRepository
+	GroupRepository
+controller
+	AppController
+infrastructure
+	utils.py (toate clase, asta nu)
+		-sortare, cautare(return list care satisfac cond) -> mySort(l, relation), relation este functie(conditia)
+			-mySearch(l, cond) -> cond=functie
+ui
+	AppUI
+tests
+	...
+app.py
+
+==============================
+atribute lungi, parametrii scurti denumiti
+class Member:
+	def __init__(self, id, firstName, lastName, age):
+		self.__id = id
+		self.__fN = 
+		..
+		self.__age = age
+	def __str__(self):
+		return str(self.__id) + " " + ... + str(age)
+	def __repr__(self):
+		return str(self)
+
+class Group:
+	def __init__(self, id, name, memberList, ):
+		self.__id = id
+		self.__name = name
+		self.__mL = memberList
+	def __str__(self):
+		return str(self.__id)+" "+self.__name+" "+str(self.__mL)
+	def __repr__(self):
+		return str(self)
+
+===============================
+-toate conditiile de sortare asa, se schimba functia parametru
+
+def mySort(l, relation):
+	for i in range(0, len(l)-1):
+		for j in range(i+1, len(l)):
+			if not relation(l[i], l[j]):
+				l[i], l[j] = l[j], l[i]
+def mySearch(l, cond):
+	res = []
+	for elem in l:
+		if cond(elem):
+			res.append(elem)
+	return res
+-daca se poate expresie lamba se scrie asa, in loc de functie relation
+
+=================================
+from infrastructure.utils import mySort
+class memberRepository:
+	def __init__(self):
+		self.__data = []
+	def addMember(self, m):
+		if self.findById(m.getId()) ==None:
+			self.__data.append(m)
+		#raise memberException()
+
+	def findById(self, id):
+		for elem in self.__data:
+			if elem.getId() == id:
+				return elem
+		return None
+
+			
+
+	def updateMember(self, id, l, f, a):
+		for el in self.__data:
+			if el.getId() == id:
+				el.setFirstName(f)
+				el.setLastName(l)
+				el.setAge(a)
+				break
+
+	def sortByLastName(self):
+		myList = self.__data[:]
+		mySort(myList, lambda x,y: x.getLastName() < y.getLastName() )
+		return myList
+
+=================================
+class GroupRepository:
+	def __init__(self):
+		self.__data = []
+	def addGroup(self, g):
+		#+exceptions
+		self.append(g)
+	def sortMembersInGroup(self, id):
+		for el in self.__data:
+			if el.getId() == id:
+				mySort(el.getMemberList(), lambda x,y: x.getAge() <= y.getAge())
+
+*in class Group
+def computeNoM(self, st):
+	'''number of members containing string st'''
+	c = 0 #count
+	for i in range(len(self.__memberList)):
+		if st in self.__memberList[i].getLastName():
+			c += 1
+	return c 
+
+*in class GroupRepository
+def sortGroupsByMembers(self, st):
+	myList = self.__data[:]
+	mySort( myList, lambda x,y: x.computeNoM(st) < y.computeNoM(st) )
+	return myList
+
+def searchGroupsByMembers(self, f):
+	#f - first name
+	def checkGroup(g):
+		#macar un membru are first name = f
+		for el in g.getMemberList():
+			if el.getFirstName == f:
+				return True
+		return False
+	return mySearch(self.__data, checkGroup )
+				
+
+def searchMinGByAge(self, id, v):
+	'''
+	totii membrii under given age din grupurile cu id
+	'''		
+	g = mySearch(self.__data, lambda x: x.getId() == id)
+	if len(g)==1:
+		return mySearch(g[0].getML(), lambda x: x.getAge() < v )
+	#un for daca sunt mai mult cu acelasi id
+
+=====================
+from domain.member import Member
+from domain.group import Group
+
+class AppController():
+
+	def __init__(self, grepo, mrepo):
+		self.__grepo = grepo
+		self.__mrepo = mrepo
+		#aici putem popula cu default mebrii si grupuri
+
+	def addMember(self, id, fN, lN, a)
+		m = Member(id, fN, lN, a)
+		self.__mrepo.addMember(m)
+
+	def addGroup(self, id, name, listMembers):
+		for el in listMembers:
+			self.__mrepo.addMember(elem)
+		g = Group(id, name, listMembers
+		self.__grepo.addGroup(g)
+		
+	def addListMRec(self, l):
+		#varianta recursiva
+		if len(l) == 0:
+			return
+		else:
+			self.__mrepo.addmember(l[0])
+			self.addListMRec(l[1:])
+			
+
+
+
+
+
+
+
+
+

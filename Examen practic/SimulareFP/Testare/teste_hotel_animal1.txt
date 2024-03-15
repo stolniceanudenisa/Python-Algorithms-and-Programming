@@ -1,0 +1,4 @@
+1,Oscar,1000,Caine
+
+2,Tietu,250,Pisica
+

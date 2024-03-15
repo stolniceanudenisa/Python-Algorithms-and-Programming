@@ -1,0 +1,100 @@
+5810;A High Wind In Jamaica;Richard Hughes;True;0
+7240;Animal Farm;George Orwell;True;0
+2340;Death Comes For The Archbishop;Willa Cather;True;0
+6623;The Grapes Of Wrath;John Steinbeck;True;0
+3780;Under The Volcano;Malcolm Lowry;True;0
+6906;An American Tragedy;Theodore Dreiser;True;0
+7867;The Great Gatsby;F. Scott Fitzgerald;True;0
+1211;Loving;Henry Green;True;0
+1708;A Portrait Of The Artist As A Young Man;James Joyce;True;0
+4345;Wide Sargasso Sea;Jean Rhys;True;0
+2272;An American Tragedy;Theodore Dreiser;True;0
+2091;To The Lighthouse;Virginia Woolf;True;1
+4575;The Prime Of Miss Jean Brodie;Muriel Spark;True;0
+6686;The Secret Agent;Joseph Conrad;True;0
+2701;The Sun Also Rises;Ernest Hemingway;True;0
+6960;The Heart Is A Lonely Hunter;Carson McCullers;True;0
+2480;The Way Of All Flesh;Samuel Butler;True;0
+2642;U.S.A.(Trilogy);John Dos Passos;True;0
+3411;Parade'S End;Ford Madox Ford;True;0
+2922;The Moviegoer;Walker Percy;True;0
+5309;The Wings Of The Dove;Henry James;True;0
+1085;Wide Sargasso Sea;Jean Rhys;True;0
+2060;The Magus;John Fowles;True;0
+4901;The Heart Is A Lonely Hunter;Carson McCullers;True;0
+1453;Nostromo;Joseph Conrad;True;0
+6993;The Sun Also Rises;Ernest Hemingway;True;0
+5285;Lord Of The Flies;William Golding;True;1
+7545;Lord Jim;Joseph Conrad;True;0
+7596;The Secret Agent;Joseph Conrad;True;0
+6466;To The Lighthouse;Virginia Woolf;True;0
+2698;The Call Of The Wild;Jack London;True;0
+5784;Deliverance;James Dickey;True;0
+3308;Women In Love;D.H. Lawrence;True;0
+3687;Main Street;Sinclair Lewis;True;0
+2391;Winesburg, Ohio;Sherwood Anderson;True;0
+1553;Nostromo;Joseph Conrad;True;0
+1461;Ironweed;William Kennedy;True;0
+1919;Native Son;Richard Wright;True;0
+1780;A Room With A View;E.M. Forster;True;0
+5862;The Moviegoer;Walker Percy;True;0
+5659;The Magus;John Fowles;True;0
+7808;Deliverance;James Dickey;True;1
+6578;Lord Jim;Joseph Conrad;True;0
+3152;Sophie'S Choice;William Styron;True;0
+3635;The Rainbow;D.H. Lawrence;True;0
+3523;The Call Of The Wild;Jack London;True;0
+3387;The Heart Is A Lonely Hunter;Carson McCullers;True;0
+6110;Lolita;Vladimir Nabokov;True;0
+4160;Ironweed;William Kennedy;True;0
+3207;Women In Love;D.H. Lawrence;True;1
+4801;Lolita;Vladimir Nabokov;True;0
+1271;Lolita;Vladimir Nabokov;True;0
+4957;Brave New World;Aldous Huxley;True;0
+6192;A Farewell To Arms;Ernest Hemingway;True;1
+1714;Light In August;William Faulkner;True;0
+4180;The Catcher In The Rye;J.D. Salinger;True;0
+6101;Wide Sargasso Sea;Jean Rhys;True;0
+8478;Henderson The Rain King;Saul Bellow;True;0
+7559;The Day Of The Locust;Nathanael West;True;0
+1576;Winesburg, Ohio;Sherwood Anderson;True;0
+4161;The Heart Is A Lonely Hunter;Carson McCullers;True;0
+2548;Scoop;Evelyn Waugh;True;0
+4975;From Here To Eternity;James Jones;True;0
+3330;Brave New World;Aldous Huxley;True;0
+7499;A Bend In The River;V.S. Naipaul;True;0
+3009;The Wapshot Chronicles;John Cheever;True;0
+2138;The Moviegoer;Walker Percy;True;0
+7568;The Ginger Man;J.P. Donleavy;True;0
+1268;Loving;Henry Green;True;0
+2282;The Heart Is A Lonely Hunter;Carson McCullers;True;0
+5895;Point Counter Point;Aldous Huxley;True;0
+6092;Loving;Henry Green;True;1
+8217;Ironweed;William Kennedy;True;0
+2999;Brave New World;Aldous Huxley;True;0
+7352;Midnight'S Children;Salman Rushdie;True;1
+4524;A Room With A View;E.M. Forster;True;0
+8426;The Secret Agent;Joseph Conrad;True;0
+2482;1984;George Orwell;True;0
+1699;The Ambassadors;Henry James;True;0
+2297;On The Road;Jack Kerouac;True;1
+1505;A Farewell To Arms;Ernest Hemingway;True;0
+7085;Parade'S End;Ford Madox Ford;True;0
+1304;The Day Of The Locust;Nathanael West;True;0
+3311;Winesburg, Ohio;Sherwood Anderson;True;0
+5460;Zuleika Dobson;Max Beerbohm;True;0
+1180;A Clockwork Orange;Anthony Burgess;True;0
+1205;The Catcher In The Rye;J.D. Salinger;True;0
+3920;The Naked And The Dead;Norman Mailer;True;0
+1864;Animal Farm;George Orwell;True;0
+7737;Tobacco Road;Erskine Caldwell;True;0
+2030;Pale Fire;Vladimir Nabokov;True;1
+5615;Under The Volcano;Malcolm Lowry;True;0
+1769;Portnoy'S Complaint;Philip Roth;True;1
+7060;Darkness At Noon;Arthur Koestler;True;0
+4893;Native Son;Richard Wright;True;0
+4321;Native Son;Richard Wright;True;0
+6480;Ironweed;William Kennedy;True;0
+6111;Sons And Lovers;D.H. Lawrence;True;0
+8770;Ragtime;E.L. Doctorow;True;0
+2017;Finnegans Wake;James Joyce;True;1

@@ -1,0 +1,123 @@
+seminar
+
+in controller.py
+class ContactValidator:
+#1 metoda
+	def validate(self, c):
+		errors=""
+		if c.getName() == "":
+			errors += "Name not valid!"
+		if len(c.getNumber()) != 10:
+			errors +="Number not valid!"
+		if len(errors)>0:
+			raise ValueError(errors)
+
+in app.py
+v = ContactValidator()
+ctrl = ContactController(repo, v)
+
+in tests
+class TestContactValidator(TestCase):
+
+	def testValidate(self):
+		c = Contact("Ana", "0123")
+		v = ContactValidator()
+		try:
+			v.validate(c)
+			assert False
+		except ValueError:
+			assert True
+
+		c = Contact("Andrei", "0741234567")
+		try:
+			v.validate(c)
+			assert True
+		except ValueError:
+			assert False
+		
+
+in ??
+class ContactException(Exception):
+	def __init__(self, message):
+		self.__message = message
+	def __str__(self):
+		return self.__message
+[..]
+if len(error)>0:
+	raise ContactException("..")
+[..]
+try:
+...
+except ContactException as e:
+	print(e)
+		
+
+============================================= recursivitate
+
+f(n) = 3*n
+n=1->3
+n=k->3+f(n-1)
+
+def f(n):
+if n==1:
+	return 3
+else:
+	return 3+f(n-1)
+
+def f(n)
+if n==1:
+	return 1
+else:
+	return n+f(n-1)
+
+
+#Minim din lista
+def f(l):
+	if len(l)==1:
+		return l[0]
+	else:
+		return min( l[0], f(l[1:]) )
+
+
+#Minim din lista cu liste
+def f(l):
+	if len(l)==1:
+		if type(l[0])==list:
+			return f(l[0])
+		else:
+			return l[0]
+	else:
+		if type(l[0])==list
+			return min( f(l[0]), f(l[1:]) )
+		else:
+			return min( l[0], f(l[1:]) )
+
+
+#type([1]) == "list"/list
+1
+1 1
+1 2 1
+1 3 3 1
+
+
+def pascal(n):
+	if n==1:
+		return [1]
+	else:
+		line=[1]
+		prev_line = pascal(n-1)
+		for i in range(len(prev_line)-1):
+			line.append( prev_line[i] + prev_line[i+1] )
+		line.append(1)
+		
+		return line
+
+
+-lista..de cate ori apare un numar intr-o lista
+def frec(l, nr):
+	if len(l)==0:
+		return 0
+	if l[0]==nr:
+		return 1 + frec(l[1:], nr)
+	else:
+		return frec(l[1:], nr)

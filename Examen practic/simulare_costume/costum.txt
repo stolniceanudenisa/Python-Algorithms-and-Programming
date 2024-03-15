@@ -1,0 +1,7 @@
+1,Rochie,vara,1000,True
+2,bluza,iarna,2000,False
+3,pijama,vara,3000,True
+4,tricou,iarna,4000,True
+5,sapca,iarna,5000,False
+6,palarie,vara,150,True
+7,manusi,vara,650,False

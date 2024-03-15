@@ -1,0 +1,11 @@
+1,Azor,240,caine
+2,Mommy,100,pisica
+3,Laurel,1200,zebra
+4,Mikey,110,caine
+5,Lupu,543,caine
+6,Leyla,100,pisica
+7,Carl,257,zebra
+8,Oleaca,512,zebra
+9,Kalin,765,pisica
+10,Tom,90,pisica
+11,Chris,178,caine

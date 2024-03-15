@@ -1,0 +1,10 @@
+sarit,1,5
+sarit,2,7
+sarit,3,8
+sarit,4,6
+sarit,5,8
+alergat,1,6
+alergat,2,8
+alergat,3,4
+alergat,4,3
+alergat,5,5
