@@ -1,0 +1,11 @@
+1,Fratii Karamazov,Roman,Fiodor Dostoievski
+2,Metamorfoza,Nuvela,Frank Kafka
+3,Livada de visini,Piesa de teatru,Anton Cehov
+4,Suflete moarte,Roman,Nikolai Gogol
+5,Strainul,Roman,Albert Camus
+6,Maestrul si Margareta,Roman,Mihail Bulgakov
+7,Batranul si marea,Roman,Ernest Hemingway
+8,Dincolo de bine si rau,Carte filosofica,Friedrich Nietzsche
+9,Suflete moarte,aaa,bb
+10,Ion,Roman,Liviu Rebreanu
+11,Ion,aaa,bb

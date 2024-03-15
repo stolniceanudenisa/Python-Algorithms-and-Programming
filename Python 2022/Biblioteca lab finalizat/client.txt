@@ -1,0 +1,6 @@
+1,Ion Popa,5220309019075
+2,Mihai Catalin,5220311017040
+3,Munteanu Adrian,5220324015964
+4,Neamt Victor,5220526015748
+5,Stanescu Silvia,6221110019741
+6,Vintila Maria,6221110015314
