@@ -1,0 +1,3 @@
+101,AP-22,Radu Gaceanu
+102,Algebra,Septimiu Crivei
+103,Fizica,Nume profesor fizica

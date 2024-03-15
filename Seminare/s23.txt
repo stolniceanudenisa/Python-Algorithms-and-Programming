@@ -1,0 +1,89 @@
+import operator
+# 1) inverstati o lista data
+def p1(a):
+    #a.reverse()
+    a = a[::-1]
+    return a
+
+# 2) concatenati doua liste date
+def p2(a,b):
+    list = []
+    for x,y in zip(a,b):
+        list.append(str(x) + y)
+    return list
+
+def testP1():
+    assert p1([3,4,5]) == [5,4,3]
+    assert p1(["a", "b", "c"]) == ["c", "b", "a"]
+    assert p1([1, [2,3], [4,5,6]]) == [[4,5,6], [2,3], 1]
+    assert p1("roxana") == "anaxor"
+
+# 3) stergeti un anumit punct din lista
+def p3(list, p):
+    while p in list:
+        list.remove(p)
+    return list
+
+def testp3():
+    assert p3([1,1,2,3],1) == [2,3]
+    assert p3(["a", "b", "c", "c"], "c") == ["a", "b"]
+    assert p3([1,3],2) == [1, 3]
+    assert p3([], 4) == []
+
+# 4) transformare lista in tuplu
+# listele sunt mutabile, tuplu nemutabil
+# la tuplu iterarea se face mai rapid
+# listele sunt mai bune la operatii
+# listele consuma mai multa memorie
+# listele au mai multe metode deja construite, tuplu-rile nu au
+def p4(lista):
+    res = tuple(lista)
+    return res
+
+
+
+# 5) sortare dictionar
+def p5(dict):
+    dict_sort = sorted(d.items(), key = operator.itemgetter(0))
+    return dict_sort
+
+# 6) schimbare valoare 
+def p6(dict, key, val):
+    for d in dict:
+        if d == key:
+            dict[key] = val
+    return dict
+
+        
+# 7) concatenare dictionare
+def p7(dict1, dict2, dict3):
+    dict4 ={}
+    for d in (dict1, dict2, dict3):
+        dict4.update(d)
+    return dict4
+
+if __name__ == "__main__":
+    a = [1,2,3,4,5]
+    print(p1(a))
+    a = [1,2,3,4,5]
+    b = ["unu", "doi", "trei", "patru", "cinci"]
+    print(p2(a, b))
+    testP1()
+    list1 = [5,20,15,20,25,50,50]
+    print(p3(list1,20))
+    testp3()
+
+    print(p4(a))
+
+    d = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+    print(p5(d))
+    print(p6(d, 0, 9))
+
+    dict1 = {"a":1, "b":2}
+    dict2 = {"c":3, "d":4}
+    dict3 = {"e":5, "f":2}
+    print(p7(dict1, dict2, dict3))
+
+
+    
+

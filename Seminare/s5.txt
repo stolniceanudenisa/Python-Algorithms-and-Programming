@@ -1,0 +1,89 @@
+# 1) Principiul unei singure responsabilitati (Single Responability Principle - SRP)
+# o functie trebuie sa aiba o singura responsabilitate
+# multiple responsabilitati conduc la 
+# - dificultati in intelegere si utilizare
+# - imposibilitatea de a testa
+# - imposibilitatea de a refolosi
+# - dificultati la intretinere si evolutie
+
+# 2) Principiul separarii responsabilitatilor (separation of concers - SoC)
+# procesul de separare a unui program in responsabilitati care nu se suprapun
+
+# 3) Cuplare 
+# cu cat exista mai multe conexiuni intre module cu atat modulul este mai greu de inteles si intretinut
+# ideal -  grad de cuplare scazut (Low coupling) - interdependenta intre module este minima astefel o modificare afecteaza doar o parte din aplicatie
+
+# 4) Coeziunea
+# masoara car de relationate sunt responsabilitatile unui element din program
+# grad de coeziune ridicat ( High Cohesion) - elementele implementeaza responsabilitati inrudite
+
+# 5) Arhitectura Stratificata
+# minimizarea cuplarii intre module 
+# maximizarea coeziune pentru module
+# fiecare strat comunica doar cu stratul imediat urmator
+# fiecare strat are o interfata bine definita (se ascund detaliile) interfata dolosita de stratul imadiat superior
+
+#Nivele: 
+#  - nivel prezentare (UI) 
+#  - nivel logic (domain)
+#  - infrastructura - functii/module generale,utilitare
+#  - coordonatorul aplicatiei - asambleaza si porneste aplicatia
+# module ex: domain, ui, utils, main
+
+
+#Exceptii:
+# - erori detectate in timpul rularii
+# - exceptiile sunt aruncate in momentul in care o eroare este detectata
+
+
+#ex: ValueError - impartirea la 0
+def funct1(a,b):
+    # descriere: imparte a la b
+    #input a, b nr naturale
+    # output rezultatul impartirii
+    # Raise ValueError if b==0
+    if b == 0 :
+        raise ValueError("nu se poate imparti la 0")
+    else: 
+        return a/b
+
+#funct1(10,0)
+
+#Tratarea exceptiilor
+def sum():
+    try:
+        funct1(10,0)
+    except ValueError as msg:
+        print("Eroarea e ", msg)
+sum()
+
+
+def sum(a,b):
+    c = 0
+    try:
+        c = a + b
+    except ValueError:
+        print("nu se pot aduna")
+    finally:
+        c = a
+    return c
+
+#print(sum(10,"b"))
+
+# folosim exceptii pt:
+# a semnala o eroare - nu putem furniza rezultatul promis
+# a semnala incalcarea preconditiilor
+
+#testare exceptii
+def test_funct1():
+    assert funct1(10,5) == 2
+    try:
+        funct1(10,0)
+        assert False
+    except ValueError:
+        assert True
+    
+
+
+test_funct1()
+

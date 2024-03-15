@@ -1,0 +1,14 @@
+1. lungimea unei liste
+2. suma elementelor dintr-o lista
+3. produsul cifrelor unui nr.
+4. factorial
+5. cmmdc scaderi repetate
+6. cmmdc Euclid
+7. cmmdc al elementelor dintr-o lista
+8. elementul minim dintr-o lista
+9. cautare secventiala cu slicing si fara
+10. cautare binara
+11. filtrare cu parametru result si fara
+12. fibonacci cu parametri x si y si fara
+13. sortare metoda bulelor
+

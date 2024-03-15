@@ -1,0 +1,151 @@
+######################################################################################
+
+TypeError: nume_functie() missing 1 required positional argument: 'nume_variabila'
+
+->  daca in main.py lipsesc () la instantierea clasei (vezi DisciplinaRepository):
+
+    student_repository = StudentRepository()
+    disciplina_repository = DisciplinaRepository
+
+
+->  corectare in main.py:
+
+    student_repository = StudentRepository()
+    disciplina_repository = DisciplinaRepository() #observati ca am adaugat () la final
+
+######################################################################################
+
+TypeError: __init__() takes 1 positional argument but 2 were given
+
+->  eroarea se intampla la o linie ce presupune instantierea unei clase, asa:
+
+    repository = Repository()
+
+
+->  poate veni de la faptul ca am gresit numele metodei __init__ in clasa Repository
+    numele metodei trebuie sa fie EXACT __init__ si NU _init_ sau __int__
+    observati erorile de scriere
+
+######################################################################################
+
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+->  daca in UI citim un numar asa:
+
+    nota_minima = input("Introduceti nota minima:")
+        #observati ca nu am transformat in int()
+        #deci chiar daca de la tastatura citim un numar (cum ar fi: 5)
+        #variabila nota_minima il va vedea ca pe un sir de caractere (asa: "5")
+    self.__controller.studenti_cu_nota_minima(nota_minima)
+        #probabil ca in controller vom compara valoarea variabilei nota_minima cu un numar intreg,
+        #deci vom incerca sa comparam sirul de caractere "5" cu un numar intreg cum ar fi 10, de acolo e eroarea.
+
+
+->  rezolvare:
+
+    nota_minima = int(input("Introduceti nota minima:")) #observati ca am adaugat int() asa vom transforma "5" in 5
+    ...
+
+######################################################################################
+
+ValueError: invalid literal for int() with base 10: 'Introduceti id:'
+
+->  daca in UI avem ceva de genul acesta:
+
+    id = int("Introduceti id:")
+        #am uitat sa punem input(),
+        #deci programul nostru incearca sa converteasca sirul de caractere "Introduceti id:" la un numar intreg
+        #de acolo e eroarea
+
+
+->  corectam asa:
+
+    id = int(input("Introduceti id:"))
+
+######################################################################################
+
+AttributeError: 'Repository' object has no attribute 'getById'
+
+->  daca noi in clasa Repository avem metoda:
+
+        def getById(id):
+            ...
+
+    dar undeva in cod spunem:
+
+        repository.getByid(id) #observati i mic aici
+
+
+->  ca rezolvare: trebuie sa corectam atunci cand apelam metoda, ca sa o apelam EXACT cu numele cu care este definita
+
+        repository.getById(id) #observati I mare aici, ca in numele metodei din clasa Repository
+
+######################################################################################
+
+NameError: name 'student_repository' is not defined
+
+->  daca in main.py avem:
+
+    inscriere_repository = InscriereRepository(student_repository, disciplina_repository)
+    student_repository = StudentRepository()
+    disciplina_repository = DisciplinaRepository()
+
+->  observati ca InscriereRepository foloseste ca parametri student_repository si disciplina_repository
+    dar student_repository si disciplina_repository vor fi initializate abia DUPA ce sunt folosite de InscriereRepository
+
+->  ca rezolvare: e nevoie sa mutam initializarea inscriere_repository la final,
+    ca sa poata folosi student_repository si disciplina_repository initializate, asa:
+
+    student_repository = StudentRepository()
+    disciplina_repository = DisciplinaRepository()
+    inscriere_repository = InscriereRepository(student_repository, disciplina_repository)
+
+######################################################################################
+
+Daca apar erori ciudate cand codul ar trebui sa mearga...
+
+Verificati sa nu cumva sa se fi intamplat ca parametrii transmisi sa fie inversati:
+->  in main.py:
+
+    student_repository = StudentRepository()
+    disciplina_repository = DisciplinaRepository()
+    inscriere_repository = InscriereRepository(disciplina_repository, student_repository) #observati ordinea aici
+
+->  in class InscriereRepository:
+
+    def __init__(self, student_repository, disciplina_repository): #observati ordinea aici
+        self.__student_repository = student_repository
+        self.__disciplina_repository = disciplina_repository
+
+->  apoi cand in InscriereRepository apelam: self.__student_repository.get_studenti() primim eroare
+    pentru ca noi in main.py am transmis pentru InscriereRepository pe prima pozitie disciplina_repository,
+    dar constructorul din InscriereRepository considera ca prima valoare va fi student_repository si abia a doua va fi disciplina_repository.
+    Deci cele doua au fost inversate, iar noi de fapt apelam metoda specifica repository-ului de studenti pe un obiect de tipul DisciplinaRepository, de acolo e eroarea.
+
+
+->  rezolvare: in main.py, vom da parametrii in ordinea corecta (intai student_repository, apoi disciplina_repository):
+
+    student_repository = StudentRepository()
+    disciplina_repository = DisciplinaRepository()
+    inscriere_repository = InscriereRepository (student_repository, disciplina_repository)
+
+######################################################################################
+
+Noul obiect e adaugat in lista, dar NU se salveaza si in fisier, desi folositi FileRepository si l-ati implementat corect.
+
+->  daca lucrati cu fisiere si aveti ierarhia urmatoare (unde <- inseamna "mosteneste"):
+
+    Repository <- StudentRepository <- StudentFileRepository
+
+    cu metodele din StudentFileRepository scrise corect, ca la seminar
+    si in main.py folositi repository-ul de tipul file repository corect, asa:
+
+        student_repository = StudentFileRepository("studenti.txt")
+
+    DAR cand apelati: student_repository.adauga(student) #apelam metoda adauga pe repository-ul de tipul StudentFileRepository
+    desi noul student e adaugat in lista de studenti, el NU se salveaza si in fisierul "studenti.txt"
+
+->  verificati ca nu cumva sa fi scris alt nume pentru metoda adauga din StudentFileRepository:
+        numele trebuie sa fie EXACT adauga (NU adauga_student, NU file_adauga)
+
+######################################################################################

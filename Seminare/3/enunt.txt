@@ -1,0 +1,12 @@
+Sa se creeze o aplicatie care sa gestioneze o lista de carti
+O carte se caracterizeaza prin cod (numeric), titlu, autor, pret.
+
+Aplicatia trebuie sa contina urmatoarele functionalitati:
+
+1. Adaugare carte
+2. Modificare carte dupa cod (codul ramane acelasi)
+3. Stergere calatorie dupa cod (se considera ca sunt unice codurile introduse)
+
+Stergerea tuturor cartilor scrise de un autor
+Afiseaza cartile cuprinse intr-un interval de pret
+Afiseaza pretul total al cartilor pentru fiecare autor

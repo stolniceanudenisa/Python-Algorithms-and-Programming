@@ -1,0 +1,52 @@
+Pentru Lab7-9 se vor folosi clase. 
+Lab7-9 se va imparti in 3 iteratii (Lab7, Lab8, Lab9)
+Pentru Lab7:
+    - este nevoie sa aveti operatiile de adaugare in lista si tiparire lista pentru una din entitatile problemei voastre
+    - este nevoie sa aveti documentatie in cod (comentarii la functii), teste si validari pentru toate operatiile voastre
+
+#################################################################################################################
+
+Clasele vor descrie cele 2 entitati specificate in problema:
+ex: Student si ProblemaLabortaor, Client si Film, Client si Carte, Persoana si Eveniment
+
+Observati ca pentru fiecare problema pe care o veti primi vi se va cere sa:
+- Asignati studentilor probleme de laborator (pentru Student si ProblemaLaborator)
+- Inchiriati un film/carte unui client (pentru Client si Film/Carte)
+- Inscrieti o persoana la un eveniment (pentru Persoana si Eveniment)
+
+---> in acest caz, voi va trebui sa creati o noua entitate (clasa) care sa lege cele 2 entitati din problema voastra:
+ex:
+- Pentru asignare problema de laborator unui student: 
+    - veti crea o clasa Tema: care sa aiba drept campuri un id_tema (unic), id_student, id_problema, nota_acordata  
+
+- Pentru inchiriere film/carte unui client:
+    - veti crea o clasa Inchiriere: care sa aiba drept campuri id_inchiriere (unic), id_client, id_film/carte, data_inchiriere, data_returnare
+
+- Pentru inscrierea unei persoane la un eveniment:
+    - veti crea o clasa Inscriere: care sa aiba drept campuri id_inscriere (unic), id_persoana, id_eveniment, ...
+    
+exemplu concret:
+Daca am clasa Student (cu id_student si nume_student) si clasa Disciplina (cu id_disciplina, nume_disciplina)
+Atunci cand mi se cere sa pot inscrie un student la o anumita disciplina stiu ca va trebui sa creez clasa Inscriere,
+care va contine un id_inscriere (unic), id_student, id_disciplina si nota finala.
+
+Studenti:
+id  nume
+--------
+1   Sara
+2   Andrei
+
+Discipline:
+id  nume
+---------
+1   AP-22
+2   Algebra
+3   Geometrie
+
+Inscriere:
+id_inscriere  id_student  id_disciplina  nota
+---------------------------------------------
+1               1           2             4   (am inscris studentul cu id=1 (pe Sara) la disciplina cu id=2 (Algebra) si i-am dat nota 4)
+2               1           3             10  (am inscris studentul cu id=1 (pe Sara) la disciplina cu id=3 (Geometrie) si i-am dat nota 10)
+3               2           2             7   (am inscris studentul cu id=2 (pe Andrei) la disciplina cu id=2 (Algebra) si i-am dat nota 7)
+

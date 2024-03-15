@@ -1,0 +1,11 @@
+Scrieti o aplicatie pentru gestiunea programelor de training la care participa angajatii unei companii.
+Aplicatia stocheaza:
+-angajati: id, nume
+-traininguri: id, nume, descriere, durata
+
+Creati o aplicatie care permite:
+-gestiunea listei de angajati si trainiguri
+-adauga, sterge, modifica lista de angajati, lista de traininguri
+-cautare angajati, cautare evenimente
+-inscriere angajat la training
+...

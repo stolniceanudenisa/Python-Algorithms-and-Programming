@@ -1,0 +1,5 @@
+3n^2 + 2n + 1
+
+limita inferioara/caz favorabil -> omega(n^2), omega(n), omega(1), omega(2n) etc
+limita stransa/ caz mediu -> big theta(n^2) ("intersectia" intre limita inferioara si superioara)
+limita superioara/caz defavorabil -> O(n^2), O(n^3) etc

@@ -1,0 +1,25 @@
+Studenti:
+11 Sara
+12 Dana
+13 Andrei
+
+Discipline:
+101 AP-22
+102 Algebra
+
+Ca sa putem adauga o inscriere in lista de inscrieri, trebuie ca:
+(1) id inscriere sa fie unic
+(2) studentul cu acel id sa existe in lista de studenti
+(3) disciplina cu acel id sa existe in lista de discipline
+(4) sa nu existe in lista de inscrieri o alta inscriere a studentului la aceeasi disciplina
+
+Ex:
+Inscrieri: 
+<id> <student_id> <disciplina_id> <nota>
+1 12 101 8 -> am inscris studentul cu id=12 la disciplina cu id=101 si i-am dat nota 8 (id inscriere=1)
+1 13 102 9 -> gresit, incalca (1)
+2 15 102 7 -> gresit, incalca (2)
+3 11 109 9 -> gresit, incalca (3)
+4 12 101 9 -> gresit, incalca (4)
+
+-> DACA VREM SA STERGEM O DISCIPLINA LA CARE ESTE DEJA INSCRIS UN STUDENT, SE VA AFISA MESAJ DE EROARE

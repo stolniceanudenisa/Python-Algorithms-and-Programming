@@ -1,0 +1,128 @@
+Exemplu 1:
+
+Initial listele sunt:
+lista_avioane = []
+lista_undo = []
+
+--->    ADAUGAM UN AVION: avion1 = {"cod":123, "tip":"F-35", "culoare":"gri", "an_fabricatie":2018}
+
+Listele devin:
+lista_avioane = [{"cod":123, "tip":"F-35", "culoare":"gri", "an_fabricatie":2018}]
+lista_undo = [ ["sterge", 123] ] <--- in liste de undo am adaugat operatia opusa, ca sa putem sterge avionul dupa codul lui
+
+--->    DACA ACUM AM FACE UNDO:
+            - am lua din lista_undo ultima sublista (in cazul nostru si singura): ["sterge", 123]
+            - pentru ca operatia din acesta sublista este "sterge", vom face o stergere de avion din lista_avioane
+            - elementul din sublista de dupa "sterge" este 123 (codul avionului pe care vrem sa il stergem) 
+                => stergem avionul cu codul 123
+            - eliminam sublista ["sterge", 123] din lista de undo dupa ce executam aceasta stergere
+            
+Listele devin:
+lista_avioane =  []
+lista_undo = [] <--- daca mai vrem sa facem undo, observam ca lista de undo e goala, ceea ce ne semnaleaza ca lista_avioane e in starea ei initiala
+
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+Exemplu 1 pe scurt:
+
+lista_avioane = []
+lista_undo = []
+
+--> ADAUGAM AVION {"cod":123, "tip":"F-35", "culoare":"gri", "an_fabricatie":2018}
+lista_avioane = [{"cod":123, "tip":"F-35", "culoare":"gri", "an_fabricatie":2018}]
+lista_undo = [ ["sterge", 123] ]
+
+--> UNDO
+lista_avioane = []
+lista_undo = []
+
+############################################################################################################################
+############################################################################################################################
+############################################################################################################################
+
+Exemplu 2:
+
+Liste initiale:
+lista_avioane = []
+lista_undo = []
+
+--->    ADAUGAM UN AVION: avion2 = {"cod":124, "tip":"Eurofighter Typhoon", "culoare":"gri", "an_fabricatie":2010}
+
+Listele devin:
+lista_avioane = [{"cod":124, "tip":"Eurofighter Typhoon", "culoare":"gri", "an_fabricatie":2010}]
+lista_undo = [ ["sterge", 124] ] <--- in liste de undo am adaugat operatia opusa, ca sa putem sterge avionul dupa codul lui
+
+--->    MODIFICAM UN AVION: avion2 devine {"cod":124, "tip":"Boeing", "culoare":"alb", "an_fabricatie":2010}
+
+Listele devin:
+lista_avioane = [{"cod":124, "tip":"Boeing", "culoare":"alb", "an_fabricatie":2010}]
+lista_undo = [ ["sterge", 124], ["modifica", 124, "Eurofighter Typhoon", "gri", 2010] ]
+
+--->    STERGEM UN AVION: stergem avion2 = {"cod":124, "tip":"Boeing", "culoare":"alb", "an_fabricatie":2010}, dupa codul 124
+
+Listele devin:
+lista_avioane = []
+lista_undo = [ ["sterge", 124], ["modifica", 124, "Eurofighter Typhoon", "gri", 2010], ["adauga", avion2] ]
+
+--->    FACEM UNDO LA ULTIMA OPERATIE:
+        - ultima operatie efectuata a fost stergere avion2 {"cod":124, "tip":"Boeing", "culoare":"alb", "an_fabricatie":2010}
+        - in lista_undo, operatia opusa acestei stergeri este descrisa de ultima sublista ["adaugare", avion2]
+        - efectuam o adaugare, cu avion2 ca avion adaugat
+        - stergem din lista_undo sublista ["adauga", avion2] dupa efectuarea adaugarii
+
+Listele devin:
+lista_avioane = [{"cod":124, "tip":"Boeing", "culoare":"alb", "an_fabricatie":2010}]
+lista_undo = [ ["sterge", 124], ["modifica", 124, "Eurofighter Typhoon", "gri", 2010] ]
+
+--->    FACEM UNDO LA ULTIMA OPERATIE:
+        - ultima operatie este acum modificarea avionului din (Eurofighter Typhoon in Boeing)
+        - in lista_undo, operatia opusa modificarii este tot o modificare (vom modifica avionul nostru Boeing inapoi in Eurofighter Typhoon) 
+            si este descrisa de ultima sublista ["modifica", 124, "Eurofighter Typhoon", "gri", 2010] 
+        - efectuam modificare avion2
+        - stergem din lista_undo sublista ["modifica", 124, "Eurofighter Typhoon", "gri", 2010] dupa efectuarea modificarii
+
+Listele devin:
+lista_avioane = [{"cod":124, "tip":"Eurofighter Typhoon", "culoare":"gri", "an_fabricatie":2010}]
+lista_undo = [ ["sterge", 124] ]
+
+--->    FACEM UNDO LA ULTIMA OPERATIE:
+        - ultima operatie este acum adaugarea avionului
+        - in lista_undo, operatia opusa acestei adaugari este descrisa de ultima sublista ["sterge", 124]
+        - efectuam stergere avion2
+        - stergem din lista_undo sublista ["sterge", 124] dupa efectuarea modificarii
+        
+Listele devin:
+lista_avioane = []
+lista_undo = []
+
+
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+Exemplu 2 pe scurt:
+
+lista_avioane = []
+lista_undo = []
+
+--> ADAUGAM {"cod":124, "tip":"Eurofighter Typhoon", "culoare":"gri", "an_fabricatie":2010}
+lista_avioane: [{"cod":124, "tip":"Eurofighter Typhoon", "culoare":"gri", "an_fabricatie":2010}]
+lista_undo:[ ["sterge", 124] ]
+
+--> MODIFICAM avionul ca sa devina {"cod":124, "tip":"Boeing", "culoare":"alb", "an_fabricatie":2010}
+lista_avioane:  [{"cod":124, "tip":"Boeing", "culoare":"alb", "an_fabricatie":2010}]
+lista_undo:[ ["sterge", 124], ["modifica", 124, "Eurofighter Typhoon", "gri", 2010] ]
+
+--> STERGEM avionul
+lista_avioane = []
+lista_undo = [ ["sterge", 124], ["modifica", 124, "Eurofighter Typhoon", "gri", 2010], ["adauga", avion2] ]
+
+--> UNDO
+lista_avioane = [{"cod":124, "tip":"Boeing", "culoare":"alb", "an_fabricatie":2010}]
+lista_undo = [ ["sterge", 124], ["modifica", 124, "Eurofighter Typhoon", "gri", 2010] ]
+
+--> UNDO
+lista_avioane = [{"cod":124, "tip":"Eurofighter Typhoon", "culoare":"gri", "an_fabricatie":2010}]
+lista_undo = [ ["sterge", 124] ]
+
+--> UNDO:
+lista_avioane = []
+lista_undo = []

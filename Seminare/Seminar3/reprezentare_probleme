@@ -1,0 +1,14 @@
+Cum reprezentam entitatile din problemele de la Lab4-6?
+
+1. Numere Complexe:
+numar_complex1 = {"parte_reala":2, "parte_imaginara":5}     #reprezentam 2+5i
+numar_complex2 = {"parte_reala":16, "parte_imaginara":0}    #reprezentam 16
+numar_complex3 = {"parte_reala":0, "parte_imaginara":1}      #reprezentam i
+
+
+6. Agentie de turism
+vacanta1 = {"id"=1, "inceput":[8,10,2022], "final":[20,10,2022], "destinatie":"Bali", "pret":5000}
+vacanta2 = {"id"=2, "inceput":[5,9,2022], "final":[14,9,2022], "destinatie":"Beijing", "pret":3000}
+
+cum obtinem luna de inceput? asa:
+luna_inceput = vacanta1["inceput"][1]

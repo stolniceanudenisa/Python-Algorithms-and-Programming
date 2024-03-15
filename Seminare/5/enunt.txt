@@ -1,0 +1,20 @@
+Sa se creeze o aplicatie care sa gestioneze o lista de carti
+O carte se caracterizeaza prin cod (numeric), titlu, autor, pret.
+
+Aplicatia trebuie sa contina urmatoarele functionalitati:
+
+1. Adaugare carte
+2. Modificare carte dupa cod (codul ramane acelasi)
+3. Stergere carte dupa cod (se considera ca sunt unice codurile introduse)
+4. Stergerea tuturor cartilor scrise de un autor
+5. Afiseaza cartile cuprinse intr-un interval de pret
+6. Afiseaza pretul total al cartilor pentru fiecare autor
+7. Cautare in toate campurile
+8. Media preturilor pt. fiecare autor
+9. Cea mai scumpa carte a fiecarui autor
+
+Afisati cartile sortate dupa pret descrescator
+Reduceti cu un procent citit de la utilizator cartile unui autor dat
+Afisati cartile grupate pe categorii de preturi din 50 in 50. (ex.: de la 0 la 50, de la 50 la 100 etc) 
+
+

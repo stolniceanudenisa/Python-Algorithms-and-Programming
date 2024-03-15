@@ -1,0 +1,8 @@
+1. Sa se scrie o aplicatie pentru consola cu meniu care sa aiba urmatoarele optiuni:
+
+a. Citire lista
+b. Afisare lista
+c. Afisarea numerelor palindrom din lista
+d. Afisarea celei mai lungi secvente de numere divizbile cu 10
+e. Iesire aplicatie
+
