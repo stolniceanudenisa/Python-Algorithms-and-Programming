@@ -1,0 +1,194 @@
+1. Suma a n numere
+
+# functie care citeste numarul
+def CitireNumar():
+    n=int(input("Dati un numar: "))
+    return n
+
+''' 
+    functie care efectueaza suma numerelor pana la un numar n dat
+    input - numarul n
+    output - suma
+'''
+def suma(n):
+    s=0
+    for i in range (0,n+1):
+        s+=i
+    return s
+
+if __name__ == "__main__":
+    n=CitireNumar()
+    s=suma(n)
+    print(s)
+
+
+
+
+2. Verificare daca un numar este prim
+
+# functie care citeste numarul
+def CitireNumar():
+    n=int(input("Dati un numar: "))
+    return n
+''' 
+    functie care verifica daca un numar e prim
+    input - numarul testat n
+    output - functia returneaza True daca numarul este prim, 0 in caz contrar
+'''
+def verif_prim(n):
+    for d in range(2, int(n/2+1)):
+        if (n%d==0):
+            return False
+        return True
+
+if __name__ == "__main__":
+    n=CitireNumar()
+    rezultat=verif_prim(n)
+    print(rezultat)
+
+
+
+
+
+
+3. cmmmdc
+
+# functie care citeste numarul
+def CitireNumar():
+    n=int(input("Dati numar: "))
+    return n
+
+''' 
+    functie care calculeaza cmmdc-ul a doua numere
+    input - perechea de numere x si y
+    output - cmmdc-ul stocat in x
+'''
+def cmmdc_euclid(x,y):
+    while(y!=0):
+        r=x%y
+        x=y
+        y=r
+    return x
+
+if __name__ == "__main__":
+    n=CitireNumar()
+    m=CitireNumar()
+    rezultat=cmmdc_euclid(n,m)
+    print(rezultat)
+
+
+
+
+4.
+
+from Problema2 import CitireNumar, verif_prim
+
+''' 
+    gaseste cel mai mare numar prim, mai mare decat un numar dat
+    input - numarul n
+    output - numarul n care se modifica, pana cand ajunge un numar prim mai mare decat el insusi
+'''
+def gasire_primul_numar_mai_mare(n):
+    n+=1
+    while(verif_prim==False):
+        n+=1
+    return n
+
+if __name__ == "__main__":
+    n=CitireNumar()
+    rezultat=gasire_primul_numar_mai_mare(n)
+    print(rezultat)
+
+
+
+
+
+
+
+4'. primele k numere mai mare decat n   NETERM
+def ReadNumber():
+    n=input("Number 1 ")
+    n=int(n)
+    return n
+
+def firstnumber(n):
+    n+=1
+    while(isprim(n)==False):
+        n+=1
+    return n
+    
+def kPrimNumbers(n,k):
+    list=[]
+    while(k>0):
+        n=firstnumber(n)
+        k-=1
+        list.append(n)
+    return list
+    
+n=ReadNumber()
+print(list)
+
+
+
+
+
+
+
+5. Se da data nașterii (zi/luna/an), determinați vârsta persoanei in zile.
+
+def CitireNumar():
+    n=int(input("Dati un numar: "))
+    return n
+''' 
+    descriere - functie
+    input -
+    output -
+    
+    Formula:
+    Age in Days = (Age in Years x 365.2425) + Remaining Days
+    Where--->
+    Age in Years = ((Current Date) - (Date of Birth) / 365.2425)
+    Remaining Days = FLOOR(MOD((TODAY() - Birthdate), 365.2425))
+    https://www.shorttutorials.com/how-to-calculate-age/age-in-days.html
+'''
+
+def date_persoana(an,luna,zi,an_curent,luna_curenta, zi_curenta):
+
+
+
+tema 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

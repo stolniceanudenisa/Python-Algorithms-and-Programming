@@ -1,0 +1,41 @@
+def init():
+    return 0
+
+def getNext(sol, pos):
+    return sol[pos] + 1
+
+def isConsistent(sol):
+    isCons = True
+    i = 0
+    while (i<len(sol)-1) and (isCons==True):
+        if (sol[i] == sol[len(sol) - 1]):
+            isCons = False
+        else:
+            i = i + 1
+    return isCons
+
+def isSolution(solution, n):
+    return len(solution) == n
+
+def formGroupsBacktracking(n):
+    '''
+    Form groups of k elements which have a similar trait
+    :param k: the number of elements in a group
+    ''' 
+    k = 0; solution = []
+    initValue = init()
+    solution.append(initValue)
+    while (k >= 0):
+        isSelected = False
+        while (isSelected==False) and (solution[k]<n):
+            solution[k] = getNext(solution, k)
+            isSelected = isConsistent(solution)
+        if (isSelected == True):
+            if (isSolution(solution,n) == True):
+                yield solution
+            else:
+                k = k + 1
+                solution.append(init())
+        else:
+            del(solution[k])
+            k = k - 1

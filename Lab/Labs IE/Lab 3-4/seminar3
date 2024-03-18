@@ -1,0 +1,136 @@
+def printMenu():
+    msg = "Menu: \n"
+    msg += "\t 1 - View the list \n"
+    msg += "\t 2 - Add element \n"
+    msg += "\t 3 - Maximum of the list\n"
+    msg += "\t 4 - Delete by index\n"
+    msg += "\t 5 - Delete by value\n"
+    msg += "\t 6 - Delete all elements that are negative numbers\n"  #usinf FOR and then WHILE
+    msg += "\t 7 - Delete the sequence starting with the first even number to the last even number\n"
+    # {1, 2 , 3, 4, 2, 5, 8, 7, 9} --> {1, 7, 9}
+    msg += "\t 0 - Exit \n"
+    print(msg)
+
+def displayList(l):
+    '''
+    Displays a list of numbers on the screen.
+    :input: l - a list of numbers
+    '''
+    s = ""
+    for elem in l:
+        s += str(elem) + " "
+    print(s)
+
+def addList(l, e):
+    '''
+    Adds an element at the end of the list
+    :param l: the list of numbers
+    :param e: the element to be added
+    '''
+    l.append(e)
+
+def maxList(l):
+    '''
+    Returns the maximum of the list
+    l - the list of elements
+    '''
+    maximum = l[0]
+    for i in l:
+        if i > maximum:
+            maximum = i
+    print(maximum)
+
+def deleteByIndex(l, i):
+    '''
+    Deletes an element by index from a given list
+    :param l: the list of numbers
+    :param i: the index value
+    '''
+    if i >= 0 and i <= len(l)-1:
+        del l[i]
+
+def deleteByValue(l, v):
+    '''
+    Deletes all elements from a list that are equal to a given value
+    :param l: the list of numbers
+    :param v: the number
+    '''
+    for i in range(len(l)-1, -1, -1):
+        if l[i] == v:
+            del l[i]
+
+def deleteNegative(l):
+    '''
+    Deletes all the negative numbers in the list
+    :param l: the list of numbers
+    '''
+    for i in range(len(l), -1, -1):
+        if l[i] < 0:
+            del l[i]
+
+def deleteSequence(l, x, y):
+    '''
+    Deletes the sequence starting with the first even number to the last even number
+    :param l: the list of numbers
+    :param x: the first even number
+    :param y: the second even number
+    '''
+    for i in range(x, y+1):
+        l.pop(x)
+        del list[x:(y+1)]
+    '''
+        ^
+        | The above code works for deleting a sequence of elements startig from x to y
+    '''
+
+
+def start():
+    my_list = [1, 2, 3]
+    print("Start...")
+
+    #option = ""
+    stop =  False
+    while stop == False:
+        printMenu()
+        option = input("Your option: ")
+
+        if option == "1":
+            displayList(my_list)
+
+        elif option == "2":
+            elem = int(input("Value of new element: "))
+            addList(my_list,elem)
+            displayList(my_list)
+
+        elif option == "3":
+            if len(my_list) != 0:
+                maxList(my_list)
+            else:
+                print("The list is empty!")
+
+        elif option == "4":
+            ind = int(input("Index of element to be deleted: "))
+            deleteByIndex(my_list, ind)
+            displayList(my_list)
+
+        elif option == "5":
+            val = int(input("Value to be deleted:"))
+            deleteByValue(my_list, val)
+            displayList(my_list)
+
+        elif option == "6":
+            deleteNegative(my_list)
+            displayList(my_list)
+
+        elif option == "7":
+            deleteSequence(my_list, x, y)
+            displayList()
+
+        elif option == "0":
+            print("Exit...")
+            stop = True
+
+        else:
+            print("Option does not exist")
+
+start()

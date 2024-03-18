@@ -1,0 +1,715 @@
+
+https://github.com/AP-MI-2021/lab-3-AverageLinuxEnjoyer
+
+
+
+
+
+https://teams.microsoft.com/_#/school/FileBrowserTabApp/Cristina%20seminar?threadId=19:387eacdb5cea4fe984caf33c871c93a3@thread.tacv2&ctx=channel
+
+https://ubbcluj.sharepoint.com/sites/AP-22/_layouts/15/stream.aspx?id=%2Fsites%2FAP%2D22%2FShared%20Documents%2FCristina%20seminar%2FRecordings%2FMeeting%20in%20%5FCristina%20seminar%5F%2D20221013%5F161313%2DMeeting%20Recording%2Emp4&referrer=Teams%2ETEAMS%2DWEB&referrerScenario=teamsSdk%2DopenFilePreview
+
+https://drive.google.com/drive/folders/1ANzK4t_NIXfCPvx5umSc-f7CJfd4ce-u
+
+
+
+
+
+
+
+https://github.com/AP-MI-2021/lab-3-AverageLinuxEnjoyer
+
+https://github.com/AP-MI-2021/lab-2-deliamorosanu
+
+https://github.com/AP-MI-2021/lab-1-IosuaPop
+
+https://github.com/AP-MI-2021/lab-2-mateisalajan
+https://github.com/AP-MI-2021/lab-2-HurubeanAlexia
+
+https://github.com/AP-MI-2021
+https://github.com/AP-MI-2021/lab-1-ioanaelena/blob/main/main.py
+https://github.com/AP-MI-2021/lab-1-BordianuRaul/blob/main/main.py
+
+https://github.com/AP-MI-2021/lab-1-waterAddicted/blob/main/main.py
+
+
+
+
+https://github.com/DanBesu
+
+https://github.com/GeorgeDanicico?tab=repositories
+
+
+https://github.com/EmanuelPutura
+
+https://github.com/eduardstef926
+
+
+https://github.com/tomadimitrie/university
+
+
+https://github.com/StefanCsPurge
+
+https://github.com/dorismoisuc
+
+https://github.com/ramonaghilea
+
+https://github.com/PerlMonker303
+https://github.com/alexandra-olahut/University-Projects
+
+https://github.com/dragos231456
+https://github.com/IoanaDudas
+https://github.com/carinaghiorghita
+https://github.com/Taveeh/University
+
+
+
+
+
+1.Găsiți primul număr prim mai mare decât un număr dat.
+
+from Problema2 import CitireNumar, verif_prim
+
+''' 
+    descriere - functie care gaseste cel mai mare numar prim, mai mare decat un numar dat
+    input - numarul n
+    output - numarul n care se modifica, pana cand ajunge un numar prim mai mare decat el insusi
+'''
+def gasire_primul_numar_mai_mare(n):
+    n+=1
+    while(verif_prim==False):
+        n+=1
+    return n
+
+if __name__ == "__main__":
+    n=CitireNumar()
+    rezultat=gasire_primul_numar_mai_mare(n)
+    print(rezultat)
+
+
+
+
+
+
+
+
+
+2.Se da data nașterii (zi/luna/an), determinați vârsta persoanei in zile.
+
+def CitireNumar():
+    n=int(input("Dati un numar: "))
+    return n
+''' 
+    descriere - functie
+    input -
+    output -
+    
+    Formula:
+    Age in Days = (Age in Years x 365.2425) + Remaining Days
+    Where--->
+    Age in Years = ((Current Date) - (Date of Birth) / 365.2425)
+    Remaining Days = FLOOR(MOD((TODAY() - Birthdate), 365.2425))
+    https://www.shorttutorials.com/how-to-calculate-age/age-in-days.html
+'''
+
+def date_persoana(an,luna,zi,an_curent,luna_curenta, zi_curenta):
+
+
+
+
+
+https://brainly.ro/tema/2811383
+
+
+
+
+3.Determina o data calendaristica (sub forma an, luna, zi) pornind de
+la doua numere întregi care reprezintă anul si numărul
+de ordine al zilei in anul respectiv.
+
+'''
+    descriere - Determina o data calendaristica (sub forma an, luna, zi) pornind de
+    la doua numere întregi care reprezintă anul si numărul
+    de ordine al zilei in anul respectiv.
+    input - anul si numarul de ordine
+    output - o data calendaristica (sub forma an, luna, zi)
+'''
+
+An=int(input())
+nr_ordine_zi=int(input())
+#ex:  70 70//30==2 70%30==10
+if nr_ordine_zi>365:
+    print("nu se poate")
+else:
+    print(str(An),".",nr_ordine_zi//30,".",nr_ordine_zi%30)
+
+
+
+
+
+
+
+
+
+
+
+4.Dându-se numărul natural n, determina numerele prime p1 si p2 astfel ca
+n = p1 + p2
+(verificarea ipotezei lui Goldbach). Pentru ce fel de n exista soluție? - pentru n par
+
+n=int(input("Dati numarul: "))
+
+def prim(n):
+    if(n>=2):
+        for i in range(2,int(n/2)+1):
+            if n%i == 0:
+                return False
+        return True
+  
+
+for p1 in range(n):
+    ok=False
+    for p2 in range(n):
+        if prim(p1) == True and prim(p2) == True:
+                if p1+p2==n:
+                    ok=True
+                    print(p1)
+                    print(p2)
+                    break
+    if ok==True:
+        break
+
+
+
+
+
+
+
+
+
+
+5.Determina numerele prime p1 si p2 gemene imediat superioare numărului
+natural nenul n dat. Doua numere prime p si q sunt gemene
+daca q-p = 2.
+
+
+
+
+n=int(input())
+p1=n
+p2=n
+def prim(n):
+    for i in range (2,int(n/2)+1):
+        if n%i==0:
+            return False
+    return True
+
+def gasit():  
+    global p1
+    global p2
+    ok=0
+    while ok==0:
+        p2+=1
+        if prim(p2)  :
+            if p1!=n and p2-p1==2:
+                break
+            p1=p2
+        
+      
+
+gasit()
+print(p1,p2)
+
+
+
+
+sau
+
+NETERMINAT
+
+n=int(input("Dati numarul: "))
+
+def prim(n):
+    if(n>=2):
+        for i in range(2,int(n/2)+1):
+            if n%i == 0:
+                return False
+        return True
+  
+
+def gasire_primul_numar_mai_mare(p):
+    global p
+    if p==0:
+        p=1+n
+    while(prim(p)==False):
+        p+=1
+    return p
+
+def aldoilea(q):
+    if gasire_primul_numar_mai_mare(p)==True:
+            q=p+2
+            if prim(q)==True:
+                return q
+            else:
+                gasire_primul_numar_mai_mare(q)
+
+
+sau
+
+NETERMINAT
+
+n=int(input("Dati numarul: "))
+
+def prim(n):
+    if(n>=2):
+        for i in range(2,int(n/2)+1):
+            if n%i == 0:
+                return False
+        return True
+    return False
+
+
+#def rec(p,q):
+p=0
+while(prim(p)==False):
+    p+=1
+q=p+2
+if(prim(p)==True and prim(q)==True):
+    print(p,q)
+else:
+    while(prim(p)!=True and prim(q)==True or prim(p)==True and prim(q)!=True):
+        while (prim(p) == False):
+            p += 1
+        q = p + 2
+        if (prim(p) == True and prim(q) == True):
+            print(p, q)
+
+
+
+
+
+
+
+
+ 
+
+ 
+6.Găsește cel mai mic număr m din șirul lui Fibonacci definit de
+f[0]=f[1]=1, f[n]=f[n-1]+f[n-2], pentru n>2,
+mai mare decât numărul natural n dat, deci exista k astfel ca f[k]=m si m>n.
+
+n=int(input("Dati numarul: "))
+
+def fibo(n):
+    f1=f2=1
+    f3=0
+    while f3<=n:
+        f3=f1+f2
+        f1=f2
+        f2=f3
+    print(f3)
+
+fibo(n)
+
+
+
+#1,1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233
+
+
+
+ 
+
+
+
+7.
+
+n=int(input("Dati numarul: "))
+
+p=1
+d=2
+while(d*d<=n):
+    if(n%d==0):
+        p=p*d*n//d
+    d+=1
+
+print(p)
+
+
+
+
+
+
+
+8.
+
+M1
+ Pentru un număr natural n dat găsiți numărul natural maxim m format cu
+ același cifre. Ex. n=3658, m=8653.
+ 
+'''
+    descriere - numărul natural maxim m format cu aceleași cifre
+    input - numarul n
+    output - numarul maxim format din aceleasi cifre
+'''
+
+
+n = int(input())
+
+
+# asa se face cu lista doar cu int
+def formare_lista(n):
+    global b
+    b = []
+    aux = n
+    while aux:
+        c = aux % 10
+        b = b + [c]
+        aux //= 10
+    print(b)
+
+
+"""
+#metoda cu lista din string in int
+n=str(input())
+
+def strin(n):
+
+    l=[int(i) for i in n ]
+    print(l)
+
+strin(n)
+"""
+
+
+def sort(b):
+    for i in range(len(b)):
+        for j in range(len(b)):
+            if b[i] > b[j]:
+                x = b[i]
+                b[i] = b[j]
+                b[j] = x
+    print(b)
+
+
+def formare_numar_cifre_desc(b):
+    m = 0
+    for i in range(len(b)):
+        m = m * 10 + b[i]
+    print(m)
+
+
+if __name__ == "__main__":
+    formare_lista(n)
+    sort(b)
+    formare_numar_cifre_desc(b)
+
+
+ 
+
+sau
+
+
+def sort(b):
+    for i in range(len(b)):
+        for j in range(len(b)):
+            if b[i] < b[j]:
+                x = b[i]
+                b[i] = b[j]
+                b[j] = x
+    print(b)
+
+
+def formare_numar_cifre_desc(b):
+    m = 0
+    p = 1
+    for i in range(len(b)):
+        m = m + b[i] * p
+        p = p * 10
+    print(m)
+
+
+
+
+
+ 
+
+sau
+
+M2 aparitii
+
+n=int(input("dati primul numar "))
+
+def aparitii(n):
+    ap1=[0,0,0,0,0,0,0,0,0,0]
+    while n>0:
+        c=n%10
+        ap1[c]+=1
+        n=n//10
+    nr=0
+    for i in range(9,0,-1):
+        while ap1[i]!=0:
+            nr=nr*10+i
+            ap1[i]-=1
+    return nr
+
+
+print(aparitii(n))
+
+ 
+
+
+
+
+ 
+
+
+9.
+
+n=int(input("Dati numarul: "))
+
+def palindrom(n):
+    inv=0
+    while n:
+        c=n%10
+        inv=inv*10+c
+        n=n//10
+    return inv
+
+print(palindrom(n))
+
+
+
+
+
+
+10.
+
+
+Pentru un număr natural n dat găsiți numărul natural minim m format cu
+aceleași cifre. Ex. n=3658, m=3568.
+
+'''
+    descriere - numărul natural maxim m format cu aceleași cifre
+    input - numarul n
+    output - numarul maxim format din aceleasi cifre
+'''
+
+
+n = int(input())
+
+# asa se face cu lista doar cu int
+def formare_lista(n):
+    global b
+    b = []
+    aux = n
+    while aux:
+        c = aux % 10
+        b = b + [c]
+        aux //= 10
+    print(b)
+
+
+"""
+#metoda cu lista din string in int
+n=str(input())
+
+def strin(n):
+
+    l=[int(i) for i in n ]
+    print(l)
+
+strin(n)
+"""
+
+
+def sort(b):
+    for i in range(len(b)):
+        for j in range(len(b)):
+            if b[i] < b[j]:
+                x = b[i]
+                b[i] = b[j]
+                b[j] = x
+    print(b)
+
+
+def formare_numar_cifre_desc(b):
+    m = 0
+    for i in range(len(b)):
+        m = m * 10 + b[i]
+    print(m)
+
+
+if __name__ == "__main__":
+    formare_lista(n)
+    sort(b)
+    formare_numar_cifre_desc(b)
+
+
+
+
+
+11.
+
+Numerele n1 si n2 au proprietatea P daca scrierile lor in baza 10 conțin
+aceleași cifre (ex. 2113 si 323121). Determinați daca doua numere naturale
+au proprietatea P.
+
+
+
+n=int(input())
+m=int(input())
+
+n=str(input())
+m=str(input())
+
+def caut(x,y):
+    for i in x:
+        if not(i in y):
+            return 0
+    return 1
+if caut(n,m)==1 and caut(m,n)==1:
+    print("scrierile lor in baza 10 conțin aceleași cifre")
+
+
+
+
+
+M2 APARITII
+ 
+n=int(input("dati primul numar "))
+m=int(input("dati al doilea numar "))
+
+
+def aparitii(n,m):
+    ap1=[0,0,0,0,0,0,0,0,0,0]
+    while n>0:
+        c=n%10
+        ap1[c]+=1
+        n=n//10
+
+    ap2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    while m > 0:
+        c2 = m % 10
+        ap2[c2]+=1
+        m = m // 10
+
+    for i in range(0,10):
+        if((ap1[i]!=0 and ap2[i]==0) or ap1[i]==0 and ap2[i]!=0):
+            return False
+    return True
+
+print(aparitii(n,m))
+
+
+
+
+
+
+
+12.
+Determinati al n-lea element al șirului
+1,2,3,2,5,2,3,7,2,3,2,5,...
+obținut din șirul numerelor naturale prin înlocuirea numerelor compuse prin
+divizorii lor primi, fără a retine termenii șirului.
+
+
+
+13.
+Determinați al n-lea element al șirului
+1,2,3,2,2,5,2,2,3,3,3,7,2,2,3,3,3,...
+obținut din șirul numerelor naturale prin înlocuirea numerelor compuse prin
+divizorii lor primi, fiere divizor prim d repetându-se de d ori, fără
+a retine termenii șirului!
+
+
+
+14.
+Generați cel mai mic număr perfect mai mare decât un număr dat. Un număr este perfect daca
+este egal cu suma divizorilor proprii. Ex. 6 este un număr perfect (6=1+2+3).
+
+#Un număr este perfect daca
+#este egal cu suma divizorilor proprii.
+n=int(input())
+def sumadiv(n):
+    d=2
+    sumdiv=1
+    while d*d<=n:
+        if n%d==0:
+            sumdiv=sumdiv+d+n//d
+        if d*d==n:
+            sumdiv=d+1
+        d+=1
+   
+        
+    return sumdiv
+
+def gasit(n):
+    i=n
+    while sumadiv(i)!=i:
+        i+=1   
+    return i
+
+print(gasit(n))
+
+
+
+
+15.
+Găsiți cel mai mare număr prim mai mic decât un număr dat. Daca nu exista un astfel de număr, tipăriți un mesaj.
+
+#Un număr este perfect daca
+#este egal cu suma divizorilor proprii.
+n=int(input())
+def prim(n):
+    for i in range (2,int(n/2)+1):
+        if n%i==0:
+            return False
+    return True
+def cmmp(n):
+    for i in range(n-1,0,-1):
+        if prim(i)==1:
+            return i
+
+print(cmmp(n))
+
+  
+
+
+
+16.
+Generați cel mai mare număr perfect mai mic decât un număr dat. Daca nu exista un astfel de
+număr, tipăriți un mesaj. Un număr este perfect daca este egal cu suma divizorilor proprii. Ex. 6 este
+un număr perfect (6=1+2+3).
+
+#Un număr este perfect daca
+#este egal cu suma divizorilor proprii.
+n=int(input())
+def sumadiv(n):
+    d=2
+    sumdiv=1
+    while d*d<=n:
+        if n%d==0:
+            sumdiv=sumdiv+d+n//d
+        if d*d==n:
+            sumdiv=d+1
+        d+=1  
+    return sumdiv
+
+def gasire(n):   
+    for i in range(n-1,0,-1):
+        if sumadiv(i)==i:
+            return i
+
+print(gasire(n))
+
+
+
+
+
+
+
+
+
+
+
+

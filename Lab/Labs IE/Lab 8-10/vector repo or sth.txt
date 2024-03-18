@@ -1,0 +1,161 @@
+def testReadRepository(self):
+        repo = VectorRepository()
+        v1 = MyVector('v1', 'r', 1, [3, 9, 10])
+        repo.addVector(v1)
+        
+        
+        v2 = MyVector('v2', 'b', 2, [10, 18, 10])
+        repo.addVector(v2)
+        
+        
+        v3 = MyVector('v3', 'g', 3, [5, -9, 10])
+        repo.addVector(v3)
+        
+        
+        v4 = MyVector('v4', 'y', 4, [-1, -2, -8])
+        repo.addVector(v4)
+        
+        
+        v5 = MyVector('O', 'm', 69, [0, 0, 0])
+        repo.addVector(v5)
+        
+        self.assertEqual(repo.getAllVectors(), [v1, v2, v3, v4, v5])
+        
+    def testGetVectorAtIndex(self):
+        repo = VectorRepository()
+        v1 = MyVector('v1', 'r', 1, [3, 9, 10])
+        repo.addVector(v1)
+        
+        
+        v2 = MyVector('v2', 'b', 2, [10, 18, 10])
+        repo.addVector(v2)
+        
+        
+        v3 = MyVector('v3', 'g', 3, [5, -9, 10])
+        repo.addVector(v3)
+        
+        
+        v4 = MyVector('v4', 'y', 4, [-1, -2, -8])
+        repo.addVector(v4)
+        
+        
+        v5 = MyVector('O', 'm', 69, [0, 0, 0])
+        repo.addVector(v5)
+        
+        self.assertEqual(repo.getVectorAtIndex(0), v1)
+        self.assertEqual(repo.getVectorAtIndex(1), v2)
+        self.assertEqual(repo.getVectorAtIndex(2), v3)
+        self.assertEqual(repo.getVectorAtIndex(3), v4)
+        self.assertEqual(repo.getVectorAtIndex(4), v5)
+        
+    def testUpdateVectorByIndex(self):
+        repo = VectorRepository()
+        v1 = MyVector('v1', 'r', 1, [3, 9, 10])
+        repo.addVector(v1)
+        
+        
+        v2 = MyVector('v2', 'b', 2, [10, 18, 10])
+        repo.addVector(v2)
+        
+        
+        v3 = MyVector('v3', 'g', 3, [5, -9, 10])
+        repo.addVector(v3)
+        
+        
+        v4 = MyVector('v4', 'y', 4, [-1, -2, -8])
+        repo.addVector(v4)
+        
+        
+        v5 = MyVector('O', 'm', 69, [0, 0, 0])
+        repo.addVector(v5)
+        
+        self.assertEqual(repo.updateVectorByIndex(0, 'a', 'b', 2, [1, 2, 3]), 'a(1, 2, 3)')
+        self.assertEqual(repo.updateVectorByIndex(1, 'v2', 'm', 2, [10, 18, 10]), 'v2(10, 18, 10)')
+        self.assertEqual(repo.updateVectorByIndex(2, 'v3', 'g', 7, [5, -9, 10]), 'v3(5, -9, 10)')
+        self.assertEqual(repo.updateVectorByIndex(3, 'v4', 'y', 4, [0, 7, 42]), 'v4(0, 7, 42)')
+        self.assertEqual(repo.updateVectorByIndex(4, 'v5', 'm', 69, [10, 24, 0]), 'v5(10, 24, 0)')
+        
+    def testUpdateVectorByNameID(self):
+        repo = VectorRepository()
+        v1 = MyVector('v1', 'r', 1, [3, 9, 10])
+        repo.addVector(v1)
+        
+        
+        v2 = MyVector('v2', 'b', 2, [10, 18, 10])
+        repo.addVector(v2)
+        
+        
+        v3 = MyVector('v3', 'g', 3, [5, -9, 10])
+        repo.addVector(v3)
+        
+        
+        v4 = MyVector('v4', 'y', 4, [-1, -2, -8])
+        repo.addVector(v4)
+        
+        
+        v5 = MyVector('O', 'm', 69, [0, 0, 0])
+        repo.addVector(v5)
+        
+        self.assertEqual(repo.updateVectorByNameID(v1, 'b', 1, [3, 9, 10]), 'v1(3, 9, 10)')
+        self.assertEqual(repo.updateVectorByNameID(v2, 'b', 3, [10, 18, 10]), 'v2(10, 18, 10)')
+        self.assertEqual(repo.updateVectorByNameID(v3, 'g', 3, [8, -9, 10]), 'v3(8, -9, 10)')
+        self.assertEqual(repo.updateVectorByNameID(v4, 'y', 1, [-1, 6, -8]), 'v4(-1, 6, -8)')
+        self.assertEqual(repo.updateVectorByNameID(v5, 'm', 1, [420, 69, 10]), 'v5(420, 69, 10)')
+        
+    def testDeleteByIndex(self):
+        repo = VectorRepository()
+        v1 = MyVector('v1', 'r', 1, [3, 9, 10])
+        repo.addVector(v1)
+        
+        
+        v2 = MyVector('v2', 'b', 2, [10, 18, 10])
+        repo.addVector(v2)
+        
+        
+        v3 = MyVector('v3', 'g', 3, [5, -9, 10])
+        repo.addVector(v3)
+        
+        
+        v4 = MyVector('v4', 'y', 4, [-1, -2, -8])
+        repo.addVector(v4)
+        
+        
+        v5 = MyVector('O', 'm', 69, [0, 0, 0])
+        repo.addVector(v5)
+        
+        repo.deleteByIndex(0)
+        self.assertEqual(repo.__len__(), 4)
+        self.assertEqual(repo.getAllVectors(), [v2, v3, v4, v5])
+        
+        repo.deleteByIndex(3)
+        self.assertEqual(repo.__len__(), 3)
+        self.assertEqual(repo.getAllVectors(), [v2, v3, v5])
+        
+    def testDeleteByNameID(self):
+        repo = VectorRepository()
+        v1 = MyVector('v1', 'r', 1, [3, 9, 10])
+        repo.addVector(v1)
+        
+        
+        v2 = MyVector('v2', 'b', 2, [10, 18, 10])
+        repo.addVector(v2)
+        
+        
+        v3 = MyVector('v3', 'g', 3, [5, -9, 10])
+        repo.addVector(v3)
+        
+        
+        v4 = MyVector('v4', 'y', 4, [-1, -2, -8])
+        repo.addVector(v4)
+        
+        
+        v5 = MyVector('O', 'm', 69, [0, 0, 0])
+        repo.addVector(v5)
+        
+        repo.deleteByNameID(v1)
+        self.assertEqual(repo.__len__(), 4)
+        self.assertEqual(repo.getAllVectors(), [v2, v3, v4, v5])
+        
+        repo.deleteByNameID(v3)
+        self.assertEqual(repo.__len__(), 3)
+        self.assertEqual(repo.getAllVectors(), [v2, v3, v5])

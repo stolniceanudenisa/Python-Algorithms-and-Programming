@@ -1,0 +1,19 @@
+from ui.console import PlaneUI
+from infrastructure.planerepo import PlaneRepository
+
+repo = PlaneRepository()
+console = PlaneUI(repo)
+console.start()
+
+
+
+
+def addPlane(self, plane: Plane):
+        '''
+        Add existing book instance to the repository
+        
+        Args: 
+        -----
+            @plane: Plane
+        '''
+        self.__plane_repository.addPlane(plane)
