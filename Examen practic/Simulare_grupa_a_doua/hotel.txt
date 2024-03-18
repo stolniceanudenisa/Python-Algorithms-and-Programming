@@ -1,0 +1,13 @@
+Rex,400,Caine
+Linda,1000,Pisica
+Jessie,6000,Caine
+Ola,20000,Girafa
+Lessie,1500,Caine
+Oscar,10000,Caine
+Jerry,2000,Soarece
+Linda,3000,Caine
+Mery,1000,Albina
+B,7000,Albina
+Clara,1500,Libelula
+Dili,300,Magar
+

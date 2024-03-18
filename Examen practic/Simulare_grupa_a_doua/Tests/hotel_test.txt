@@ -1,0 +1,4 @@
+Rex,400,Caine
+Linda,1000,Pisica
+Jessie,6000,Caine
+Ola,20000,Girafa
